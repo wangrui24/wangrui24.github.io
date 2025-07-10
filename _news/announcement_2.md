@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Our paper "Adjusted Nelson–Aalen estimators by inverse treatment probability weighting with an estimated propensity score" has been accepted at statistics in medicine.
+Our paper "Adjusted Nelson–Aalen estimators by inverse treatment probability weighting with an estimated propensity score" has been accepted at Statistics in Medicine.

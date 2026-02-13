@@ -28,7 +28,6 @@ title: Publications
 
 #### Applications and collaboration works
 
-### Collaborations & Applications
 
 1. **Wang, R.**, Wang, J., Hu, T., Zhou, X.-H. (2022). Population-Level Effectiveness of COVID-19 Vaccination Program in the United States: Causal Analysis Based on Structural Nested Mean Model. *Vaccines*.
 

@@ -8,7 +8,7 @@ subtitle: |
 about:
   template: solana
   image: files/profile_pic.jpeg
-  image-width: 20em
+  image-width: 13em
   image-shape: rounded
   links:
     - icon: envelope

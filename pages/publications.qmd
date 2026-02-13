@@ -40,7 +40,7 @@ title: Publications
 1. **Wang, R.**, Heagerty, P., Chan, KCG., Suri, P. (2025+). Estimating controlled direct treatment effects on pain intensity using structural mean models: a general approach for pain randomized controlled trials. Accepted at *Pain Reports*.
 
 
-### Preprints / Submitted / Under Review
+### Preprints / Submitted
 
 - Deng, Y., **Wang, R.**, Zhan, X. (2025+). Randomized interventional effects for semicompeteting risks, with application to allogeneic stem cell transplantation study.  [arXiv](https://arxiv.org/abs/2412.06114)
 

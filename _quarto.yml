@@ -20,8 +20,8 @@ website:
       #       text: Option 3 Research
       #     - href: pages/portfolio.qmd
       #       text: Option 4 Portfolio
-      # - href: pages/teaching.qmd
-      #   text: Teaching
+      - href: pages/teaching.qmd
+        text: Teaching
       # - href: pages/software.qmd
       #   text: Software
       # - text: CV/Resume

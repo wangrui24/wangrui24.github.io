@@ -1,45 +1,45 @@
 ---
-title: Name
+title: Rui Wang
 subtitle: |
- | Position, institution
- | pronouns
- | (name pronounciation)
+ | PhD student, University of Washington, Department of Biostatistics
+ | He/Him
+ | You can click [here](https://translate.google.com/?hl=zh-cn&sl=auto&tl=zh-CN&text=%E7%8E%8B%E7%91%9E&op=translate) to see how to pronounce my name.
 
 about:
   template: solana
-  image: files/portrait_pic.jpg
-  image-width: 10em
-  image-shape: round
+  image: files/profile_pic.jpeg
+  image-width: 20em
+  image-shape: rounded
   links:
     - icon: envelope
       text: Email
-      href: mailto:email
+      href: wangrui8@uw.edu
     - icon: mortarboard-fill 
       text: Google Scholar
-      href: https://scholar.google.com
+      href: https://scholar.google.com/citations?user=OZeSbMEAAAAJ&hl=zh-CN
     - icon: github
       text: Github
-      href: https://github.com
-    - icon: linkedin
-      text: Linkedin
-      href: https://www.linkedin.com
+      href: https://github.com/wangrui24?tab=repositories
+   # - icon: linkedin
+   #   text: Linkedin
+   #   href: https://www.linkedin.com
     - icon: person-vcard-fill
       text: ORCID
-      href: https://orcid.org/
+      href: https://orcid.org/0009-0002-0214-8191
      
 ---
 
-This is a template for an academic personal website. It was created with grad students and postdocs in mind, however, others may find it a helpful template as well! We're hopeful that it will be relevant to those seeking industry as well as academic positions and have created page options that we think are more industry-relevant, however we are more familiar with academic websites. The github repository is <https://github.com/ngalanter/academic-website-template>.
+I am a PhD student in the Department of Biostatistics at Univerisity of Washington. My research interests include causal inference and their applications in public health and social science.
 
-This template uses quarto, you can learn more about quarto websites here: <https://quarto.org/docs/websites>.
+<!-- This template uses quarto, you can learn more about quarto websites here: <https://quarto.org/docs/websites>. -->
 
-This page uses the about page template, see details here: <https://quarto.org/docs/websites/website-about.html>. This page can be used to give an overview of yourself, and you can link [externally](https://quarto.org/docs/websites) and [internally](pages/teaching.qmd).
+<!-- This page uses the about page template, see details here: <https://quarto.org/docs/websites/website-about.html>. This page can be used to give an overview of yourself, and you can link [externally](https://quarto.org/docs/websites) and [internally](pages/teaching.qmd). -->
 
-This template uses the `minty` theme with slight color customization, to change the theme or create a custom theme go to the `_quarto.yml` file. See [here](https://quarto.org/docs/output-formats/html-themes.html) for more details about themes and see [here](https://bootswatch.com/) for a preview of what the pre-made themes generally look like.
+<!-- This template uses the `minty` theme with slight color customization, to change the theme or create a custom theme go to the `_quarto.yml` file. See [here](https://quarto.org/docs/output-formats/html-themes.html) for more details about themes and see [here](https://bootswatch.com/) for a preview of what the pre-made themes generally look like. -->
 
-See the repository readme for more information about using this template and publishing via quarto and github pages.
+<!-- See the repository readme for more information about using this template and publishing via quarto and github pages. -->
 
-This goal of this template is to provide several types of pages that might be relevant, but most personal websites don't have all of these pages!
+<!-- This goal of this template is to provide several types of pages that might be relevant, but most personal websites don't have all of these pages! -->
 
 ### News
 
@@ -47,15 +47,15 @@ This goal of this template is to provide several types of pages that might be re
 news_update_start
 :::
 
-Published paper **[Paper 3](https://doi.org)** in Journal 3
+<!-- Published paper **[Paper 3](https://doi.org)** in Journal 3 -->
 
-Released preprint  **[Paper 4](https://arxiv.org/)**
+<!-- Released preprint  **[Paper 4](https://arxiv.org/)** -->
 
-Exciting update here
+<!-- Exciting update here -->
 
-Presented poster **[Poster](https://github.com)** at Conference
+<!-- Presented poster **[Poster](https://github.com)** at Conference -->
 
-Published paper **[Paper 2](https://github.com)** in Journal 2
+<!-- Published paper **[Paper 2](https://github.com)** in Journal 2 -->
 
 ::: {.content-hidden unless-format="markdown"}
 news_update_end

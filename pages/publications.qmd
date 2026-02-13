@@ -2,51 +2,37 @@
 title: Publications
 ---
 
-You may want to divide your publications by type (preprints, journal articles, others) or by theme.
-
 ## Sorted by type
 
-::: {.content-hidden unless-format="markdown"}
-pubs_v1_update_start
-:::
-### Preprints
+### Journal Articles / In Press
 
-**Last, F.**, Author (Preprint). [Paper 4](https://arxiv.org/).
+#### Statistical methodology
 
-### Journal Articles
+1. Deng, Y., Chen, F., Li, Y., Qian, K., **Wang, R.**, Zhou, X.-H. (2021). A powerful test for the maximum treatment effect in thorough QT/QTc studies. *Statistics in Medicine*, 40(8), 1947–1959.
 
-**Last, F.** (2026). [Paper 3](https://doi.org). *Journal 3*.
+1. Deng, Y., **Wang, R.** (2025+). Adjusted Nelson–Aalen Estimators by Inverse Treatment Probability Weighting With an Estimated Propensity Score. *Statistics in Medicine*, 44: e70085. [DOI](https://doi.org/10.1002/sim.70085)
 
-Author, **Last, F.** (2024). [Paper 2](https://github.com). *Journal 2*.
+#### Applications and collaboration works
 
-**Last, F.**, Author (2023). [Paper 1](https://www.wikipedia.org/). *Journal 1*.
+### Collaborations & Applications
 
-::: {.content-hidden unless-format="markdown"}
-pubs_v1_update_end
-:::
+1. **Wang, R.**, Wang, J., Hu, T., Zhou, X.-H. (2022). Population-Level Effectiveness of COVID-19 Vaccination Program in the United States: Causal Analysis Based on Structural Nested Mean Model. *Vaccines*.
 
-## Sorted by theme
+1. Barforoshi, S., Manubolu, V. S., **Wang, R.**, McClelland, R. L., Budoff, M. J. (2024). Incremental value of ABI and CAC beyond traditional risk markers in long-term prediction of cardiovascular disease incidence in participants with diabetes and impaired fasting glucose: Multi-Ethnic Study of Atherosclerosis. *Atherosclerosis*, 117186.
 
-::: {.content-hidden unless-format="markdown"}
-pubs_v2_update_start
-:::
-### Statistical Methods
+1. Ichikawa, K., **Wang, R.**, McClelland, R. L., Manubolu, V. S., Susarla, S., Lee, D., Pourafkari, L., Fazlalizadeh, H., Aldana-Bitar, J., Robin, R., Kinninger, A., Roy, S. K., Post, W. S., Budoff, M. J. (2024). The prognostic value of thoracic aortic calcification comparison with coronary artery calcification. *Heart*.
 
-**Last, F.**, Author (Preprint). [Paper 4](https://arxiv.org/).
+1. Joshi, M. A., Manubolu, V. S., Kinninger, A., **Wang, R.**, McClelland, R. L., Roy, R. K., Budoff, M. J. (2025). Sex Differences in Aortic Arch Calcification with Zero Coronary Artery Calcium. *Heart, Lung and Circulation*.
 
-**Last, F.**, Author (2023). [Paper 1](https://www.wikipedia.org/). *Journal 1*.
-
-### Public Health and Medicine
-
-Author, **Last, F.** (2024). [Paper 2](https://github.com). *Journal 2*.
-
-### Other
-
-**Last, F.** (2026). [Paper 3](https://doi.org). *Journal 3*.
-
-::: {.content-hidden unless-format="markdown"}
-pubs_v2_update_end
-:::
+1. **Wang, R.**, Heagerty, P., Chan, KCG., Suri, P. (2025+). Estimating controlled direct treatment effects on pain intensity using structural mean models: a general approach for pain randomized controlled trials. Accepted at *Pain Reports*.
 
 
+### Preprints / Submitted / Under Review
 
+- Deng, Y., **Wang, R.**, Zhan, X. (2025+). Randomized interventional effects for semicompeteting risks, with application to allogeneic stem cell transplantation study.  [arXiv](https://arxiv.org/abs/2412)
+
+- **Wang, R.**, Zhao, Y., Dukes, O., Zhang, B. (2025+). Nested Instrumental Variables Analysis: Switcher Average Treatment Effect, Identification, Efficient Estimation and Generalizability.  [arXiv](https://arxiv.org/abs/2405.07102)
+
+- **Wang, R.**, Chan, KCG., Ye, T. (2025+). GMM with Many Weak Moment Conditions and Nuisance Parameters: General Theory and Applications to Causal Inference.
+
+- Wang, Z., Sourial, N., **Wang, R.**, Bergman, H., Liu, X., Vedel, I. (2025+). Neo-Familist Values and Health-Seeking Behaviours Among Older Adults in Rural China: Evidence from China Longitudinal Aging Social Survey (CLASS). 

@@ -2,6 +2,9 @@
   "listingMap": {
     "pages\\blog.qmd": [
       "../posts/*.qmd"
+    ],
+    "pages/blog.qmd": [
+      "../posts/*.qmd"
     ]
   }
 }

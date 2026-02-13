@@ -30,7 +30,7 @@ about:
 ---
 
 ### Bio
-I am a PhD student in the Department of Biostatistics at the University of Washington. My research interests include statistical methodology for causal inference and its applications in public health and the social sciences. I am particularly interested in integrating machine learning methods to develop and evaluate causal inference approaches.
+I am a PhD student in the Department of Biostatistics at the University of Washington. My research interests include statistical methodology for causal inference and its applications in public health and the social sciences. I am particularly interested in integrating machine learning methods for causal inference.
 
 Before joining the University of Washington’s Biostatistics PhD program, I studied at Peking University, where I double-majored in preventive medicine and economics.
 

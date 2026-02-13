@@ -1,0 +1,23 @@
+---
+title: Software
+---
+
+Below is a list of R (or whatever software is relevant) packages I have contributed to.
+
+### `packagename`
+
+Role either in full words or `cre`,`aut`,`ctb`, etc. R package standard roles listed [here](https://journal.r-project.org/articles/RJ-2012-009/)
+
+Package description and how to access it.
+
+### `packagename`
+
+Role either in full words or `cre`,`aut`,`ctb`, etc. R package standard roles listed [here](https://journal.r-project.org/articles/RJ-2012-009/)
+
+Package description and how to access it.
+
+### `packagename`
+
+Role either in full words or `cre`,`aut`,`ctb`, etc. R package standard roles listed [here](https://journal.r-project.org/articles/RJ-2012-009/)
+
+Package description and how to access it.

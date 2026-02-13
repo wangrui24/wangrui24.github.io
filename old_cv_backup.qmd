@@ -1,0 +1,157 @@
+---
+title: Curriculum Vitae or Resume Format 1
+format:
+  html:
+    toc: true
+  pdf:
+    colorlinks: false
+    mainfont: Arial
+    fontsize: 11pt
+    include-in-header:
+      text: |
+        \usepackage[lmargin = 0.7in,rmargin = 0.7in,
+        tmargin =0.9in, bmargin = 0.9in]{geometry}
+        \usepackage{fancyhdr}
+        \pagestyle{fancy}
+        
+        \fancyhf{}
+        \rhead{\thepage}
+        \lhead{Name Name}
+        
+        \makeatletter         
+        \renewcommand\maketitle{
+        \begin{center}
+        {\Large \textbf{Name Name}}\\
+        \vspace{1mm}
+        \normalsize email\\
+        \vspace{1mm}
+        Updated Month YYYY
+        \end{center}} 
+        \makeatother
+     
+        \addtokomafont{disposition}{\rmfamily}
+format-links: [pdf]
+---
+
+::: {.content-hidden when-format="pdf"}
+Just as with a standard cv or resume, use whatever headings and format makes the most sense for you. These sections are just examples. See [here](https://quarto.org/docs/authoring/markdown-basics.html) for an overview of markdown formatting in quarto.
+
+For the `mainfont:` pdf option in the header, fonts that work will generally be in 
+`~/Library/Fonts` (MacOS) or `C:\Windows\Fonts` (Windows). The pdf is rendered by the site creator so any font found on the site creator's computer can be used. See also <https://quarto.org/docs/reference/formats/pdf.html#fonts> .
+:::
+
+
+## EDUCATION
+
+#### Instition, Location
+Degree, Field, Graduation Month YYYY
+
+Other Details
+
+#### Instition, Location
+Degree, Field, Graduation Month YYYY
+
+Other Details
+
+## RESEARCH EXPERIENCE
+
+### GRADUATE STUDENT RESEARCHER
+
+#### Project
+Institution/Company,  Month YYYY -- Month YYYY
+
+Supervisor/Advisor/Mentor: Name (if this is relevant)
+
+- details
+
+#### Project
+Institution/Company,  Month YYYY -- Month YYYY
+
+Supervisor/Advisor/Mentor: Name (if this is relevant)
+
+- details
+
+### UNDERGRADUATE STUDENT RESEARCHER
+
+#### Project
+Institution/Company,  Month YYYY -- Month YYYY
+
+Supervisor/Advisor/Mentor: Name (if this is relevant)
+
+- details
+
+#### Project
+Institution/Company,  Month YYYY -- Month YYYY
+
+Supervisor/Advisor/Mentor: Name (if this is relevant)
+
+- details
+
+## PUBLICATIONS
+
+::: {.content-hidden unless-format="markdown"}
+cv_pub_update_start
+:::
+
+**Last, F.** (2026). [Paper 3](https://doi.org). *Journal 3*.
+
+**Last, F.**, Author (Preprint). [Paper 4](https://arxiv.org/).
+
+Author, **Last, F.** (2024). [Paper 2](https://github.com). *Journal 2*.
+
+**Last, F.**, Author (2023). [Paper 1](https://www.wikipedia.org/). *Journal 1*.
+
+::: {.content-hidden unless-format="markdown"}
+cv_pub_update_end
+:::
+
+## TEACHING EXPERIENCE
+
+## PRESENTATIONS AND POSTERS
+
+::: {.content-hidden unless-format="markdown"}
+cv_pres_update_start
+:::
+### Presentations
+
+| **Talk 2**
+| Meeting, Place, October 2025
+| 
+| **[Talk 1](https://www.wikipedia.org/)**
+| Conference, Place, May 2024
+| Seminar, Place, March 2024
+
+### Posters
+
+| **[Poster](https://github.com)**
+| Conference, Place, July 2025
+
+::: {.content-hidden unless-format="markdown"}
+cv_pres_update_end
+:::
+
+## PROFESSIONAL SERVICE
+
+### Institution
+
+Role, Committee/Group, Month YYYY -- Month YYYY
+
+Role, Committee/Group, Month YYYY -- Month YYYY
+
+### Institution/National Organization
+
+Role, Committee/Group, Month YYYY -- Month YYYY
+
+### Reviewer
+
+Journal
+
+
+::: {.content-hidden when-format="html"}
+## References
+Available upon request
+:::
+
+::: {.content-hidden when-format="pdf"}
+HTML/PDF formatting option inspired by [this page](https://www.cynthiahqy.com/posts/cv-html-pdf/).
+:::

@@ -1,0 +1,52 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: Name
+  navbar:
+    right:
+      - href: index.qmd
+        text: About
+      - text: Research/Projects
+        menu: 
+          - href: pages/projects.qmd
+            text: Option 1 Projects
+          - href: pages/publications.qmd
+            text: Option 2 Publications
+          - href: pages/research.qmd
+            text: Option 3 Research
+          - href: pages/portfolio.qmd
+            text: Option 4 Portfolio
+      - href: pages/teaching.qmd
+        text: Teaching
+      - href: pages/software.qmd
+        text: Software
+      - text: CV/Resume
+        menu: 
+          -  href: pages/cv_resume1.qmd
+             text: Option 1
+          -  href: pages/cv_resume2.qmd
+             text: Option 2
+          -  href: https://cdn.uconnectlabs.com/wp-content/uploads/sites/25/2021/07/Andrew-Peters.pdf
+             text: Option 3
+      - href: pages/resources.qmd
+        text: Resources
+      - text: Informal Pages
+        menu: 
+          - href: pages/blog.qmd
+            text: Blog
+          - href: pages/reading_list.qmd
+            text: Reading List
+          - href: pages/more_about.qmd
+            text: More About Me
+          - href: pages/rec_lists.qmd
+            text: Personal Rec List
+
+format:
+  html:
+    theme: [minty, styles/custom.scss]
+    css: styles/styles.css
+    toc: false
+
+editor: source

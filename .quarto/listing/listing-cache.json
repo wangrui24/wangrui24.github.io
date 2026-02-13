@@ -1,0 +1,7 @@
+{
+  "listingMap": {
+    "pages\\blog.qmd": [
+      "../posts/*.qmd"
+    ]
+  }
+}

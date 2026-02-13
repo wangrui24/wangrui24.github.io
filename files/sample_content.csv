@@ -1,0 +1,10 @@
+type,subtype,theme,authors,year,month,title,link,journal,location,event,skip_in_news
+Publications,Journal Articles,Statistical Methods,"Last, F., Author",2023,,Paper 1,https://www.wikipedia.org/,Journal 1,,,
+Publications,Journal Articles,Public Health and Medicine,"Author, Last, F.",2024,,Paper 2,https://github.com,Journal 2,,,
+Publications,Journal Articles,Other,"Last, F.",2026,,Paper 3,https://doi.org,Journal 3,,,
+Presentations and Posters,Presentations,,,2024,May,Talk 1,https://www.wikipedia.org/,,Place,Conference,
+Presentations and Posters,Presentations,,,2024,March,Talk 1,https://www.wikipedia.org/,,Place,Seminar,
+Presentations and Posters,Presentations,,,2025,October,Talk 2,,,Place,Meeting,Yes
+Presentations and Posters,Posters,,,2025,July,Poster,https://github.com,,Place,Conference,
+Publications,Preprints,Statistical Methods,"Last, F., Author",2026,,Paper 4,https://arxiv.org/,,,,
+Other News,,,,2026,January,Exciting update here,,,,,

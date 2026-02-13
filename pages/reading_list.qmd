@@ -1,0 +1,20 @@
+---
+title: "Reading List"
+---
+
+A list of books (no textbooks or research papers!) I'm currently reading and have read in the recent past.
+
+### Currently Reading
+
+- Book name, author
+
+### On my List
+
+- Book name, author
+- Book name, author
+
+### Reading History
+
+- Book name, author
+- Book name, author
+

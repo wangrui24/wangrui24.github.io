@@ -1,0 +1,63 @@
+---
+title: Name
+subtitle: |
+ | Position, institution
+ | pronouns
+ | (name pronounciation)
+
+about:
+  template: solana
+  image: files/portrait_pic.jpg
+  image-width: 10em
+  image-shape: round
+  links:
+    - icon: envelope
+      text: Email
+      href: mailto:email
+    - icon: mortarboard-fill 
+      text: Google Scholar
+      href: https://scholar.google.com
+    - icon: github
+      text: Github
+      href: https://github.com
+    - icon: linkedin
+      text: Linkedin
+      href: https://www.linkedin.com
+    - icon: person-vcard-fill
+      text: ORCID
+      href: https://orcid.org/
+     
+---
+
+This is a template for an academic personal website. It was created with grad students and postdocs in mind, however, others may find it a helpful template as well! We're hopeful that it will be relevant to those seeking industry as well as academic positions and have created page options that we think are more industry-relevant, however we are more familiar with academic websites. The github repository is <https://github.com/ngalanter/academic-website-template>.
+
+This template uses quarto, you can learn more about quarto websites here: <https://quarto.org/docs/websites>.
+
+This page uses the about page template, see details here: <https://quarto.org/docs/websites/website-about.html>. This page can be used to give an overview of yourself, and you can link [externally](https://quarto.org/docs/websites) and [internally](pages/teaching.qmd).
+
+This template uses the `minty` theme with slight color customization, to change the theme or create a custom theme go to the `_quarto.yml` file. See [here](https://quarto.org/docs/output-formats/html-themes.html) for more details about themes and see [here](https://bootswatch.com/) for a preview of what the pre-made themes generally look like.
+
+See the repository readme for more information about using this template and publishing via quarto and github pages.
+
+This goal of this template is to provide several types of pages that might be relevant, but most personal websites don't have all of these pages!
+
+### News
+
+::: {.content-hidden unless-format="markdown"}
+news_update_start
+:::
+
+Published paper **[Paper 3](https://doi.org)** in Journal 3
+
+Released preprint  **[Paper 4](https://arxiv.org/)**
+
+Exciting update here
+
+Presented poster **[Poster](https://github.com)** at Conference
+
+Published paper **[Paper 2](https://github.com)** in Journal 2
+
+::: {.content-hidden unless-format="markdown"}
+news_update_end
+:::
+

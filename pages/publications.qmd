@@ -1,0 +1,52 @@
+---
+title: Publications
+---
+
+You may want to divide your publications by type (preprints, journal articles, others) or by theme.
+
+## Sorted by type
+
+::: {.content-hidden unless-format="markdown"}
+pubs_v1_update_start
+:::
+### Preprints
+
+**Last, F.**, Author (Preprint). [Paper 4](https://arxiv.org/).
+
+### Journal Articles
+
+**Last, F.** (2026). [Paper 3](https://doi.org). *Journal 3*.
+
+Author, **Last, F.** (2024). [Paper 2](https://github.com). *Journal 2*.
+
+**Last, F.**, Author (2023). [Paper 1](https://www.wikipedia.org/). *Journal 1*.
+
+::: {.content-hidden unless-format="markdown"}
+pubs_v1_update_end
+:::
+
+## Sorted by theme
+
+::: {.content-hidden unless-format="markdown"}
+pubs_v2_update_start
+:::
+### Statistical Methods
+
+**Last, F.**, Author (Preprint). [Paper 4](https://arxiv.org/).
+
+**Last, F.**, Author (2023). [Paper 1](https://www.wikipedia.org/). *Journal 1*.
+
+### Public Health and Medicine
+
+Author, **Last, F.** (2024). [Paper 2](https://github.com). *Journal 2*.
+
+### Other
+
+**Last, F.** (2026). [Paper 3](https://doi.org). *Journal 3*.
+
+::: {.content-hidden unless-format="markdown"}
+pubs_v2_update_end
+:::
+
+
+

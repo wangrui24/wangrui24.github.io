@@ -1,0 +1,32 @@
+---
+title: Projects
+---
+
+# 1st Project Name
+
+![](../files/elephant.png){fig-alt="A drawing of an elephant. A placeholder for a cool figure related to your project. Alt text should describe the figure you use in enough detail for someone to understand it without seeing it." width=40%}
+
+Description of project and your contributions
+
+### Deliverables
+
+[Report](https://github.com): Type of report or recipient, Month YYYY
+
+[Presentation](https://github.com): Audience or event, Month YYYY
+
+[Code](https://github.com)
+
+## 2nd Project Name
+
+![](../files/elephant.png){fig-alt="A drawing of an elephant. A placeholder for a cool figure related to your project. Alt text should describe the figure you use in enough detail for someone to understand it without seeing it." width=40%}
+
+Description of project and your contributions
+
+### Deliverables
+
+[Report](https://github.com): Type of report or recipient, Month YYYY
+
+[Presentation](https://github.com): Audience or event, Month YYYY
+
+[Code](https://github.com)
+

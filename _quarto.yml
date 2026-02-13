@@ -47,7 +47,9 @@ website:
 
 format:
   html:
-    theme: [minty, styles/custom.scss]
+    theme:
+      light: minty
+      dark: darkly
     css: styles/styles.css
     toc: false
 

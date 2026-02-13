@@ -2,7 +2,7 @@
 title: Rui Wang
 subtitle: |
  | PhD student, University of Washington, Department of Biostatistics
- | He/Him
+ |   
  | You can click [here](https://translate.google.com/?hl=zh-cn&sl=auto&tl=zh-CN&text=%E7%8E%8B%E7%91%9E&op=translate) to see how to pronounce my name.
 
 about:
@@ -13,7 +13,7 @@ about:
   links:
     - icon: envelope
       text: Email
-      href: wangrui8@uw.edu
+      href: mailto:wangrui8@uw.edu
     - icon: mortarboard-fill 
       text: Google Scholar
       href: https://scholar.google.com/citations?user=OZeSbMEAAAAJ&hl=zh-CN

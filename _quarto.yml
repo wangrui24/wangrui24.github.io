@@ -47,8 +47,15 @@ website:
 
 format:
   html:
-    theme: [minty, custom.scss]
-    css: styles/styles.css
-    toc: false
+     theme:
+      light: flatly
+      dark: darkly
+     css: styles/styles.css
+     toc: true
+     toc_depth: 3
+     toc_float: true
+     toc_smooth_scroll: true
+     toc_highlight: true
+     fig-align: center
 
 editor: source

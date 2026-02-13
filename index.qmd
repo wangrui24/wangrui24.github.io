@@ -29,7 +29,10 @@ about:
      
 ---
 
-I am a PhD student in the Department of Biostatistics at Univerisity of Washington. My research interests include causal inference and their applications in public health and social science.
+### Bio
+I am a PhD student in the Department of Biostatistics at the University of Washington. My research interests include statistical methodology for causal inference and its applications in public health and the social sciences. I am particularly interested in integrating machine learning methods to develop and evaluate causal inference approaches.
+
+Before joining the University of Washington’s Biostatistics PhD program, I studied at Peking University, where I double-majored in preventive medicine and economics.
 
 <!-- This template uses quarto, you can learn more about quarto websites here: <https://quarto.org/docs/websites>. -->
 
@@ -40,6 +43,11 @@ I am a PhD student in the Department of Biostatistics at Univerisity of Washingt
 <!-- See the repository readme for more information about using this template and publishing via quarto and github pages. -->
 
 <!-- This goal of this template is to provide several types of pages that might be relevant, but most personal websites don't have all of these pages! -->
+
+### Selected papers
+- **Wang, R.**, Zhao, Y., Dukes, O., Zhang, B. (2025+). Nested Instrumental Variables Analysis: Switcher Average Treatment Effect, Identification, Efficient Estimation and Generalizability.  [arXiv](https://arxiv.org/abs/2405.07102)
+
+- **Wang, R.**, Chan, KCG., Ye, T. (2025+). GMM with Many Weak Moment Conditions and Nuisance Parameters: General Theory and Applications to Causal Inference. [arXiv](https://arxiv.org/abs/2505.07295)
 
 ### News
 

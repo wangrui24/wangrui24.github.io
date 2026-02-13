@@ -10,7 +10,21 @@ title: Publications
 
 1. Deng, Y., Chen, F., Li, Y., Qian, K., **Wang, R.**, Zhou, X.-H. (2021). A powerful test for the maximum treatment effect in thorough QT/QTc studies. *Statistics in Medicine*, 40(8), 1947–1959.
 
+   <details>
+   <summary><strong>Abstract</strong></summary>
+
+   Parallel-group thorough QT/QTc studies focus on the change of QT/QTc values at several time-matched points from a pretreatment day (baseline) to a posttreatment day for different groups of treatment. The International Council for Harmonisation E14 stresses that QTc prolongation beyond a threshold represents high cardiac risk and calls for a test on the largest time-matched treatment effect (QTc prolongation). QT/QTc analysis usually assumes a jointly multivariate normal (MVN) distribution of pretreatment and posttreatment QT/QTc values, with a blocked compound symmetry covariance matrix. Existing methods use an analysis of covariance (ANCOVA) model including day-averaged baseline as a covariate to deal with the MVN model. However, the ANCOVA model tends to underestimate the variation of the estimator for treatment effects, resulting in the inflation of empirical type I error rate when testing whether the largest QTc prolongation is beyond a threshold. In this article, we propose two new methods to estimate the time-matched treatment effects under the MVN model, including maximum likelihood estimation and ordinary-least-square-based two-stage estimation. These two methods take advantage of the covariance structure and are asymptotically efficient. Based on these estimators, powerful tests for QT/QTc prolongation are constructed. Simulation shows that the proposed estimators have smaller mean square error, and the tests can control the type I error rate with high power. The proposed methods are applied on testing the carryover effect of diltiazem to inhibit dofetilide in a randomized phase 1 trial.
+
+   </details>
+
 1. Deng, Y., **Wang, R.** (2025+). Adjusted Nelson–Aalen Estimators by Inverse Treatment Probability Weighting With an Estimated Propensity Score. *Statistics in Medicine*, 44: e70085. [DOI](https://doi.org/10.1002/sim.70085)
+
+   <details>
+   <summary><strong>Abstract</strong></summary>
+
+   Inverse probability of treatment weighting (IPW) has been well applied in causal inference to estimate population-level estimands from observational studies. For time-to-event outcomes, the failure time distribution can be estimated by estimating the cumulative hazard in the presence of random right censoring. IPW can be performed by weighting the event counting process and at-risk process by the inverse treatment probability, resulting in an adjusted Nelson–Aalen estimator for the population-level counterfactual cumulative incidence function. We consider the adjusted Nelson–Aalen estimator with an estimated propensity score in the competing risks setting. When the estimated propensity score is regular and asymptotically linear, we derive the influence functions for the counterfactual cumulative hazard and cumulative incidence. Then we establish the asymptotic properties for the estimators. We show that the uncertainty in the estimated propensity score contributes to an additional variation in the estimators. However, through simulation and real-data application, we find that such an additional variation is usually small.
+
+   </details>
 
 #### Applications and collaboration works
 

@@ -49,8 +49,7 @@ Before joining the University of Washington’s Biostatistics PhD program, I stu
 ### Research Interests
 - Causal Inference
 - Semiparametric Statistics
-- Epidemiology
-- Econometrics
+- Epidemiological methods
 
 ::: {.content-hidden unless-format="markdown"}
 news_update_start

@@ -2,7 +2,7 @@
 title:  王瑞 Rui Wang
 subtitle: |
  | PhD student, University of Washington, Department of Biostatistics
- |   
+ | E-mail: wangrui8 AT uw DOT edu
  | You can click [here](https://translate.google.com/?hl=zh-cn&sl=auto&tl=zh-CN&text=%E7%8E%8B%E7%91%9E&op=translate) to see how to pronounce my name.
 
 about:

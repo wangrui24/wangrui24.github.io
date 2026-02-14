@@ -20,6 +20,9 @@ about:
     - icon: github
       text: Github
       href: https://github.com/wangrui24?tab=repositories
+    - icon: cv
+      text: CV
+      href: files/CV_new.pdf
    # - icon: linkedin
    #   text: Linkedin
    #   href: https://www.linkedin.com

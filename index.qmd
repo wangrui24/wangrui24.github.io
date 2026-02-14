@@ -20,9 +20,6 @@ about:
     - icon: github
       text: Github
       href: https://github.com/wangrui24?tab=repositories
-   # - icon: linkedin
-   #   text: Linkedin
-   #   href: https://www.linkedin.com
     - icon: person-vcard-fill
       text: ORCID
       href: https://orcid.org/0009-0002-0214-8191

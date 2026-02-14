@@ -8,12 +8,12 @@ website:
     right:
       - href: index.qmd
         text: About
+      - href: pages/publications.qmd
+        text: Publications
       - href: pages/teaching.qmd
         text: Teaching
       - text: CV/Resume
         href: files/CV_new.pdf
-      - href: pages/publications.qmd
-        text: Publications
 
 
 

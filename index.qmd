@@ -1,5 +1,5 @@
 ---
-title: Rui Wang 王瑞
+title:  王瑞 Rui Wang
 subtitle: |
  | PhD student, University of Washington, Department of Biostatistics
  |   

@@ -22,8 +22,6 @@ website:
       #       text: Option 4 Portfolio
       - href: pages/teaching.qmd
         text: Teaching
-      # - href: pages/software.qmd
-      #   text: Software
       - text: CV/Resume
         href: files/CV_new.pdf
       #   menu: 

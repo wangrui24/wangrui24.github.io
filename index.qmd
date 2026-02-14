@@ -46,7 +46,11 @@ Before joining the University of Washington’s Biostatistics PhD program, I stu
 
 - **Wang, R.**, Chan, KCG., Ye, T. (2025+). GMM with Many Weak Moment Conditions and Nuisance Parameters: General Theory and Applications to Causal Inference. [arXiv](https://arxiv.org/abs/2505.07295)
 
-### News
+### Research Interests
+- Causal Inference
+- Semiparametric Statistics
+- Epidemiology
+- Econometrics
 
 ::: {.content-hidden unless-format="markdown"}
 news_update_start

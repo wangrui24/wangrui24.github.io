@@ -10,16 +10,6 @@ website:
         text: About
       - href: pages/publications.qmd
         text: Publications
-      # - text: Research/Projects
-      #   menu: 
-      #     - href: pages/publications.qmd
-      #       text: Option 2 Publications
-      #     - href: pages/projects.qmd
-      #       text: Option 1 Projects
-      #     - href: pages/research.qmd
-      #       text: Option 3 Research
-      #     - href: pages/portfolio.qmd
-      #       text: Option 4 Portfolio
       - href: pages/teaching.qmd
         text: Teaching
       - text: CV/Resume

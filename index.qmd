@@ -6,9 +6,9 @@ subtitle: |
  | You can click [here](https://translate.google.com/?hl=zh-cn&sl=auto&tl=zh-CN&text=%E7%8E%8B%E7%91%9E&op=translate) to see how to pronounce my name.
 
 about:
-  template: solana
+  template: trestles
   image: files/profile_pic.jpeg
-  image-width: 13em
+  image-width: 20em
   image-shape: rounded
   links:
     - icon: envelope

@@ -10,6 +10,21 @@ title: Teaching
 
 **Categorical Data Analysis in Epidemiology**, University of Washington, Fall 2023
 
+**Probability and statistics**, Peking Univerisity, Spring 2021, Spring 2020
+
+**Special Topics in China Economic Research**, Peking Univerisity, Spring 2019
+
+**Intermediate Macroeconomics**, Peking Univerisity, Fall 2018
+
+**Economics Field Research**, Peking Univerisity, Spring 2018
+
+
+### Mentor
+Statistics Directed Reading Program, University of Washington
+
+Fall 2025 Topic: An Introduction to Causal Inference, Mentee: Nicktab Ayaba
+
+Spring 2025 Topic: An Introduction to Causal Inference, Mentee: Eric Leonen
 
 <!-- ### Teaching Related Service -->
 

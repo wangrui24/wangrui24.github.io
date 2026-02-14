@@ -41,7 +41,7 @@ Before joining the University of Washington’s Biostatistics PhD program, I stu
 
 <!-- This goal of this template is to provide several types of pages that might be relevant, but most personal websites don't have all of these pages! -->
 
-### Selected papers
+### Featured papers
 - **Wang, R.**, Zhao, Y., Dukes, O., Zhang, B. (2025+). Nested Instrumental Variables Analysis: Switcher Average Treatment Effect, Identification, Efficient Estimation and Generalizability.  [arXiv](https://arxiv.org/abs/2405.07102)
 
 - **Wang, R.**, Chan, KCG., Ye, T. (2025+). GMM with Many Weak Moment Conditions and Nuisance Parameters: General Theory and Applications to Causal Inference. [arXiv](https://arxiv.org/abs/2505.07295)

@@ -5,7 +5,7 @@ project:
 website:
   title: Rui Wang
   navbar:
-    right:
+    left:
       - href: index.qmd
         text: About
       - href: pages/publications.qmd

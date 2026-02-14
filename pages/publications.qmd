@@ -5,13 +5,13 @@ title: Publications
 
 ## Preprints / Submitted
 
-- Deng, Y., **Wang, R.**, Zhan, X. (2025+). Randomized interventional effects for semicompeteting risks, with application to allogeneic stem cell transplantation study.  [arXiv](https://arxiv.org/abs/2412.06114)
+- Deng, Y., **Wang, R.**, Zhan, X. (2026+). Randomized interventional effects for semicompeteting risks, with application to allogeneic stem cell transplantation study.  [arXiv](https://arxiv.org/abs/2412.06114)
 
-- **Wang, R.**, Zhao, Y., Dukes, O., Zhang, B. (2025+). Nested Instrumental Variables Analysis: Switcher Average Treatment Effect, Identification, Efficient Estimation and Generalizability.  [arXiv](https://arxiv.org/abs/2405.07102)
+- **Wang, R.**, Zhao, Y., Dukes, O., Zhang, B. (2026+). Nested Instrumental Variables Analysis: Switcher Average Treatment Effect, Identification, Efficient Estimation and Generalizability.  [arXiv](https://arxiv.org/abs/2405.07102)
 
-- **Wang, R.**, Chan, KCG., Ye, T. (2025+). GMM with Many Weak Moment Conditions and Nuisance Parameters: General Theory and Applications to Causal Inference. [arXiv](https://arxiv.org/abs/2505.07295)
+- **Wang, R.**, Chan, KCG., Ye, T. (2026+). GMM with Many Weak Moment Conditions and Nuisance Parameters: General Theory and Applications to Causal Inference. [arXiv](https://arxiv.org/abs/2505.07295)
 
-- Wang, Z., Sourial, N., **Wang, R.**, Bergman, H., Liu, X., Vedel, I. (2025+). Neo-Familist Values and Health-Seeking Behaviours Among Older Adults in Rural China: Evidence from China Longitudinal Aging Social Survey (CLASS). 
+- Wang, Z., Sourial, N., **Wang, R.**, Bergman, H., Liu, X., Vedel, I. (2026+). Neo-Familist Values and Health-Seeking Behaviours Among Older Adults in Rural China: Evidence from China Longitudinal Aging Social Survey (CLASS). 
 
 
 ## Journal Articles / In Press

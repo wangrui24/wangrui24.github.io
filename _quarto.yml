@@ -14,25 +14,8 @@ website:
         text: Teaching
       - text: CV/Resume
         href: files/CV_new.pdf
-      #   menu: 
-      #     -  href: pages/cv_resume1.qmd
-      #        text: Option 1
-      #     -  href: pages/cv_resume2.qmd
-      #        text: Option 2
-      #     -  href: https://cdn.uconnectlabs.com/wp-content/uploads/sites/25/2021/07/Andrew-Peters.pdf
-      #        text: Option 3
-      # - href: pages/resources.qmd
-      #   text: Resources
-      # - text: Informal Pages
-      #   menu: 
-      #     - href: pages/blog.qmd
-      #       text: Blog
-      #     - href: pages/reading_list.qmd
-      #       text: Reading List
-      #     - href: pages/more_about.qmd
-      #       text: More About Me
-      #     - href: pages/rec_lists.qmd
-      #       text: Personal Rec List
+
+
 
 format:
   html:

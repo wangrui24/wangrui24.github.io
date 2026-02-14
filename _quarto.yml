@@ -24,7 +24,8 @@ website:
         text: Teaching
       # - href: pages/software.qmd
       #   text: Software
-      # - text: CV/Resume
+      - text: CV/Resume
+        href: files/CV_new.pdf
       #   menu: 
       #     -  href: pages/cv_resume1.qmd
       #        text: Option 1

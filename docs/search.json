@@ -33,5 +33,229 @@
     "title": "Teaching",
     "section": "",
     "text": "Teaching Assistant\nCategorical Data Analysis in Epidemiology, University of Washington, Fall 2023\nProbability and statistics, Peking Univerisity, Spring 2021, Spring 2020\nSpecial Topics in China Economic Research, Peking Univerisity, Spring 2019\nIntermediate Macroeconomics, Peking Univerisity, Fall 2018\nEconomics Field Research, Peking Univerisity, Spring 2018\n\n\nMentor\nStatistics Directed Reading Program, University of Washington\nFall 2025 Topic: An Introduction to Causal Inference, Mentee: Nicktab Ayaba\nSpring 2025 Topic: An Introduction to Causal Inference, Mentee: Eric Leonen"
+  },
+  {
+    "objectID": "pages/blog.html",
+    "href": "pages/blog.html",
+    "title": "Blog",
+    "section": "",
+    "text": "More Musings\n\n\n\n\n\n\n\n\nJan 10, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nRandom Thought I had Today\n\n\n\n\n\n\n\n\nJan 1, 2026\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "pages/resources.html",
+    "href": "pages/resources.html",
+    "title": "Resources",
+    "section": "",
+    "text": "Sentence about how the below resources have been helpful to you, or may be useful to others starting out in the field, etc\n\nSurviving and thriving in grad school\n\n\nBest practices for data analyses\n\n\nMoving towards equity in research and teaching\n\n\nJob market resources\n\n\netc"
+  },
+  {
+    "objectID": "pages/portfolio.html",
+    "href": "pages/portfolio.html",
+    "title": "Portfolio",
+    "section": "",
+    "text": "Your name, author, author"
+  },
+  {
+    "objectID": "pages/portfolio.html#preprints",
+    "href": "pages/portfolio.html#preprints",
+    "title": "Portfolio",
+    "section": "",
+    "text": "Your name, author, author"
+  },
+  {
+    "objectID": "pages/portfolio.html#publications",
+    "href": "pages/portfolio.html#publications",
+    "title": "Portfolio",
+    "section": "Publications",
+    "text": "Publications\n\ntitle\n\nJournal, YYYY\nauthor, Your name, author, author\n\n\n\ntitle\n\nJournal, YYYY\nYour name, author, author"
+  },
+  {
+    "objectID": "pages/portfolio.html#presentations",
+    "href": "pages/portfolio.html#presentations",
+    "title": "Portfolio",
+    "section": "Presentations",
+    "text": "Presentations\n\ntitle\n\nPresented at conference/event, YYYY\nYour name, author, author\n\n\n\ntitle\n\nPresented at conference/event, YYYY\nYour name, author, author"
+  },
+  {
+    "objectID": "pages/portfolio.html#other-projects",
+    "href": "pages/portfolio.html#other-projects",
+    "title": "Portfolio",
+    "section": "Other Projects",
+    "text": "Other Projects\n\nproject name\nproject description\n\n\nproject name\nproject description"
+  },
+  {
+    "objectID": "pages/cv_resume1.html",
+    "href": "pages/cv_resume1.html",
+    "title": "Curriculum Vitae or Resume Format 1",
+    "section": "",
+    "text": "Just as with a standard cv or resume, use whatever headings and format makes the most sense for you. These sections are just examples. See here for an overview of markdown formatting in quarto.\nFor the mainfont: pdf option in the header, fonts that work will generally be in ~/Library/Fonts (MacOS) or C:\\Windows\\Fonts (Windows). The pdf is rendered by the site creator so any font found on the site creator’s computer can be used. See also https://quarto.org/docs/reference/formats/pdf.html#fonts ."
+  },
+  {
+    "objectID": "pages/cv_resume1.html#education",
+    "href": "pages/cv_resume1.html#education",
+    "title": "Curriculum Vitae or Resume Format 1",
+    "section": "EDUCATION",
+    "text": "EDUCATION\n\nInstition, Location\nDegree, Field, Graduation Month YYYY\nOther Details\n\n\nInstition, Location\nDegree, Field, Graduation Month YYYY\nOther Details"
+  },
+  {
+    "objectID": "pages/cv_resume1.html#research-experience",
+    "href": "pages/cv_resume1.html#research-experience",
+    "title": "Curriculum Vitae or Resume Format 1",
+    "section": "RESEARCH EXPERIENCE",
+    "text": "RESEARCH EXPERIENCE\n\nGRADUATE STUDENT RESEARCHER\n\nProject\nInstitution/Company, Month YYYY – Month YYYY\nSupervisor/Advisor/Mentor: Name (if this is relevant)\n\ndetails\n\n\n\nProject\nInstitution/Company, Month YYYY – Month YYYY\nSupervisor/Advisor/Mentor: Name (if this is relevant)\n\ndetails\n\n\n\n\nUNDERGRADUATE STUDENT RESEARCHER\n\nProject\nInstitution/Company, Month YYYY – Month YYYY\nSupervisor/Advisor/Mentor: Name (if this is relevant)\n\ndetails\n\n\n\nProject\nInstitution/Company, Month YYYY – Month YYYY\nSupervisor/Advisor/Mentor: Name (if this is relevant)\n\ndetails"
+  },
+  {
+    "objectID": "pages/cv_resume1.html#publications",
+    "href": "pages/cv_resume1.html#publications",
+    "title": "Curriculum Vitae or Resume Format 1",
+    "section": "PUBLICATIONS",
+    "text": "PUBLICATIONS\nLast, F. (2026). Paper 3. Journal 3.\nLast, F., Author (Preprint). Paper 4.\nAuthor, Last, F. (2024). Paper 2. Journal 2.\nLast, F., Author (2023). Paper 1. Journal 1."
+  },
+  {
+    "objectID": "pages/cv_resume1.html#teaching-experience",
+    "href": "pages/cv_resume1.html#teaching-experience",
+    "title": "Curriculum Vitae or Resume Format 1",
+    "section": "TEACHING EXPERIENCE",
+    "text": "TEACHING EXPERIENCE"
+  },
+  {
+    "objectID": "pages/cv_resume1.html#presentations-and-posters",
+    "href": "pages/cv_resume1.html#presentations-and-posters",
+    "title": "Curriculum Vitae or Resume Format 1",
+    "section": "PRESENTATIONS AND POSTERS",
+    "text": "PRESENTATIONS AND POSTERS\n\nPresentations\nTalk 2\nMeeting, Place, October 2025\n\nTalk 1\nConference, Place, May 2024\nSeminar, Place, March 2024\n\n\nPosters\nPoster\nConference, Place, July 2025"
+  },
+  {
+    "objectID": "pages/cv_resume1.html#professional-service",
+    "href": "pages/cv_resume1.html#professional-service",
+    "title": "Curriculum Vitae or Resume Format 1",
+    "section": "PROFESSIONAL SERVICE",
+    "text": "PROFESSIONAL SERVICE\n\nInstitution\nRole, Committee/Group, Month YYYY – Month YYYY\nRole, Committee/Group, Month YYYY – Month YYYY\n\n\nInstitution/National Organization\nRole, Committee/Group, Month YYYY – Month YYYY\n\n\nReviewer\nJournal\nHTML/PDF formatting option inspired by this page."
+  },
+  {
+    "objectID": "pages/cv_resume2.html",
+    "href": "pages/cv_resume2.html",
+    "title": "Curriculum Vitae or Resume Format 2",
+    "section": "",
+    "text": "This is a quicker way to include an existing CV or resume on your website."
+  },
+  {
+    "objectID": "pages/research.html",
+    "href": "pages/research.html",
+    "title": "Research and Publications",
+    "section": "",
+    "text": "Description of Research Area"
+  },
+  {
+    "objectID": "pages/research.html#research-area-two",
+    "href": "pages/research.html#research-area-two",
+    "title": "Research and Publications",
+    "section": "Research Area Two",
+    "text": "Research Area Two\n\nDescription of Research Area\n\nPresentations and Code\nTalk Name (Date, Event name or location)\nRepository Name (Code purpose)\n\n\nPublications and Manuscripts\nYour name, Author (YYYY). title. Journal.\nYour name, Author (Preprint). title."
+  },
+  {
+    "objectID": "old_cv_backup.html",
+    "href": "old_cv_backup.html",
+    "title": "Curriculum Vitae or Resume Format 1",
+    "section": "",
+    "text": "Just as with a standard cv or resume, use whatever headings and format makes the most sense for you. These sections are just examples. See here for an overview of markdown formatting in quarto.\nFor the mainfont: pdf option in the header, fonts that work will generally be in ~/Library/Fonts (MacOS) or C:\\Windows\\Fonts (Windows). The pdf is rendered by the site creator so any font found on the site creator’s computer can be used. See also https://quarto.org/docs/reference/formats/pdf.html#fonts ."
+  },
+  {
+    "objectID": "old_cv_backup.html#education",
+    "href": "old_cv_backup.html#education",
+    "title": "Curriculum Vitae or Resume Format 1",
+    "section": "EDUCATION",
+    "text": "EDUCATION\n\nInstition, Location\nDegree, Field, Graduation Month YYYY\nOther Details\n\n\nInstition, Location\nDegree, Field, Graduation Month YYYY\nOther Details"
+  },
+  {
+    "objectID": "old_cv_backup.html#research-experience",
+    "href": "old_cv_backup.html#research-experience",
+    "title": "Curriculum Vitae or Resume Format 1",
+    "section": "RESEARCH EXPERIENCE",
+    "text": "RESEARCH EXPERIENCE\n\nGRADUATE STUDENT RESEARCHER\n\nProject\nInstitution/Company, Month YYYY – Month YYYY\nSupervisor/Advisor/Mentor: Name (if this is relevant)\n\ndetails\n\n\n\nProject\nInstitution/Company, Month YYYY – Month YYYY\nSupervisor/Advisor/Mentor: Name (if this is relevant)\n\ndetails\n\n\n\n\nUNDERGRADUATE STUDENT RESEARCHER\n\nProject\nInstitution/Company, Month YYYY – Month YYYY\nSupervisor/Advisor/Mentor: Name (if this is relevant)\n\ndetails\n\n\n\nProject\nInstitution/Company, Month YYYY – Month YYYY\nSupervisor/Advisor/Mentor: Name (if this is relevant)\n\ndetails"
+  },
+  {
+    "objectID": "old_cv_backup.html#publications",
+    "href": "old_cv_backup.html#publications",
+    "title": "Curriculum Vitae or Resume Format 1",
+    "section": "PUBLICATIONS",
+    "text": "PUBLICATIONS\nLast, F. (2026). Paper 3. Journal 3.\nLast, F., Author (Preprint). Paper 4.\nAuthor, Last, F. (2024). Paper 2. Journal 2.\nLast, F., Author (2023). Paper 1. Journal 1."
+  },
+  {
+    "objectID": "old_cv_backup.html#teaching-experience",
+    "href": "old_cv_backup.html#teaching-experience",
+    "title": "Curriculum Vitae or Resume Format 1",
+    "section": "TEACHING EXPERIENCE",
+    "text": "TEACHING EXPERIENCE"
+  },
+  {
+    "objectID": "old_cv_backup.html#presentations-and-posters",
+    "href": "old_cv_backup.html#presentations-and-posters",
+    "title": "Curriculum Vitae or Resume Format 1",
+    "section": "PRESENTATIONS AND POSTERS",
+    "text": "PRESENTATIONS AND POSTERS\n\nPresentations\nTalk 2\nMeeting, Place, October 2025\n\nTalk 1\nConference, Place, May 2024\nSeminar, Place, March 2024\n\n\nPosters\nPoster\nConference, Place, July 2025"
+  },
+  {
+    "objectID": "old_cv_backup.html#professional-service",
+    "href": "old_cv_backup.html#professional-service",
+    "title": "Curriculum Vitae or Resume Format 1",
+    "section": "PROFESSIONAL SERVICE",
+    "text": "PROFESSIONAL SERVICE\n\nInstitution\nRole, Committee/Group, Month YYYY – Month YYYY\nRole, Committee/Group, Month YYYY – Month YYYY\n\n\nInstitution/National Organization\nRole, Committee/Group, Month YYYY – Month YYYY\n\n\nReviewer\nJournal\nHTML/PDF formatting option inspired by this page."
+  },
+  {
+    "objectID": "pages/more_about.html",
+    "href": "pages/more_about.html",
+    "title": "More About Me",
+    "section": "",
+    "text": "this page could be used to talk more about your hobbies, background, family, etc. You could include photos as well."
+  },
+  {
+    "objectID": "pages/projects.html",
+    "href": "pages/projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Description of project and your contributions\n\n\nReport: Type of report or recipient, Month YYYY\nPresentation: Audience or event, Month YYYY\nCode\n\n\n\n\nDescription of project and your contributions\n\n\nReport: Type of report or recipient, Month YYYY\nPresentation: Audience or event, Month YYYY\nCode"
+  },
+  {
+    "objectID": "pages/projects.html#nd-project-name",
+    "href": "pages/projects.html#nd-project-name",
+    "title": "Projects",
+    "section": "",
+    "text": "Description of project and your contributions\n\n\nReport: Type of report or recipient, Month YYYY\nPresentation: Audience or event, Month YYYY\nCode"
+  },
+  {
+    "objectID": "pages/software.html",
+    "href": "pages/software.html",
+    "title": "Software",
+    "section": "",
+    "text": "Below is a list of R (or whatever software is relevant) packages I have contributed to.\n\npackagename\nRole either in full words or cre,aut,ctb, etc. R package standard roles listed here\nPackage description and how to access it.\n\n\npackagename\nRole either in full words or cre,aut,ctb, etc. R package standard roles listed here\nPackage description and how to access it.\n\n\npackagename\nRole either in full words or cre,aut,ctb, etc. R package standard roles listed here\nPackage description and how to access it."
+  },
+  {
+    "objectID": "pages/rec_lists.html",
+    "href": "pages/rec_lists.html",
+    "title": "Personal Rec List",
+    "section": "",
+    "text": "If you want to know a little bit more about me or are ever in the (place) area, here is a list of recommendations for media, food, and places to visit.\n\nFavorite Fiction Books\n\nbook 1\nbook 2\n\n\n\nFavorite Albums\n\nalbum a\nalbum b\n\n\n\nFavoriate Shows and Movies\n\n\nBest Ice Cream in Location\n\n\nBest Places to Visit in Location\n\n\nBest non-technical books about my field"
+  },
+  {
+    "objectID": "pages/reading_list.html",
+    "href": "pages/reading_list.html",
+    "title": "Reading List",
+    "section": "",
+    "text": "A list of books (no textbooks or research papers!) I’m currently reading and have read in the recent past.\n\nCurrently Reading\n\nBook name, author\n\n\n\nOn my List\n\nBook name, author\nBook name, author\n\n\n\nReading History\n\nBook name, author\nBook name, author"
+  },
+  {
+    "objectID": "pages/publications.html#working-papers",
+    "href": "pages/publications.html#working-papers",
+    "title": "Publications",
+    "section": "",
+    "text": "Deng, Y., Wang, R., Zhan, X. (2026+).\nRandomized interventional effects for semicompeteting risks, with application to allogeneic stem cell transplantation study.\narXiv\nWang, R., Zhao, Y., Dukes, O., Zhang, B. (2026+).\nNested Instrumental Variables Analysis: Switcher Average Treatment Effect, Identification, Efficient Estimation and Generalizability.\narXiv\nWang, R., Chan, K. C. G., Ye, T. (2026+).\nGMM with Many Weak Moment Conditions and Nuisance Parameters: General Theory and Applications to Causal Inference.\narXiv\nWang, Z., Sourial, N., Wang, R., Bergman, H., Liu, X., Vedel, I. (2026+).\nNeo-Familist Values and Health-Seeking Behaviours Among Older Adults in Rural China: Evidence from China Longitudinal Aging Social Survey (CLASS)."
+  },
+  {
+    "objectID": "pages/publications.html#published-and-forthcoming",
+    "href": "pages/publications.html#published-and-forthcoming",
+    "title": "Publications",
+    "section": "Published and Forthcoming",
+    "text": "Published and Forthcoming\n\n2026\n\n\nWang, R., Heagerty, P., Chan, K. C. G., Suri, P. (2026).\nEstimating controlled direct treatment effects on pain intensity using structural mean models: a general approach for pain randomized controlled trials.\nForthcoming at Pain Reports.\n\n\n\n\n2025\n\n\nJoshi, M. A., Manubolu, V. S., Kinninger, A., Wang, R., McClelland, R. L., Roy, R. K., Budoff, M. J. (2025).\nSex Differences in Aortic Arch Calcification with Zero Coronary Artery Calcium.\nHeart, Lung and Circulation.\nDOI\nDeng, Y., Wang, R. (2025).\nAdjusted Nelson–Aalen Estimators by Inverse Treatment Probability Weighting With an Estimated Propensity Score.\nStatistics in Medicine, 44:e70085.\nDOI\n\n\n\n\n2024\n\n\nBarforoshi, S., Manubolu, V. S., Wang, R., McClelland, R. L., Budoff, M. J. (2024).\nIncremental value of ABI and CAC beyond traditional risk markers in long-term prediction of cardiovascular disease incidence in participants with diabetes and impaired fasting glucose: Multi-Ethnic Study of Atherosclerosis.\nAtherosclerosis, 117186.\nDOI\nIchikawa, K., Wang, R., McClelland, R. L., Manubolu, V. S., Susarla, S., Lee, D., Pourafkari, L., Fazlalizadeh, H., Aldana-Bitar, J., Robin, R., Kinninger, A., Roy, S. K., Post, W. S., Budoff, M. J. (2024).\nThe prognostic value of thoracic aortic calcification comparison with coronary artery calcification.\nHeart.\nDOI\n\n\n\n\n2022\n\n\nWang, R., Wang, J., Hu, T., Zhou, X.-H. (2022).\nPopulation-Level Effectiveness of COVID-19 Vaccination Program in the United States: Causal Analysis Based on Structural Nested Mean Model.\nVaccines.\nDOI\n\n\n\n\n2021\n\n\nDeng, Y., Chen, F., Li, Y., Qian, K., Wang, R., Zhou, X.-H. (2021).\nA powerful test for the maximum treatment effect in thorough QT/QTc studies.\nStatistics in Medicine, 40(8), 1947–1959.\nDOI"
   }
 ]

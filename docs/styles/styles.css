@@ -1,1 +1,108 @@
 /* css styles */
+/* =========================
+   Global typography tweaks
+   ========================= */
+
+body {
+  line-height: 1.65;
+}
+
+.quarto-title-block .title {
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.4rem;
+}
+
+.quarto-title-block .subtitle,
+.quarto-title-meta {
+  margin-bottom: 0.5rem;
+}
+
+/* =========================
+   Publications page
+   ========================= */
+
+.publication-list {
+  margin-top: 0.6rem;
+  margin-bottom: 1.4rem;
+}
+
+.publication-list ul {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.publication-list li {
+  list-style: none;
+  margin-bottom: 1.35rem;
+  padding-left: 1.6rem;
+  text-indent: -1.6rem;   /* hanging indent */
+  line-height: 1.7;
+}
+
+.publication-list li::marker {
+  content: "";
+}
+
+/* Slightly tighter spacing between year heading and entries */
+h2 {
+  margin-top: 2.2rem;
+  margin-bottom: 0.8rem;
+  font-weight: 700;
+}
+
+h3 {
+  margin-top: 1.6rem;
+  margin-bottom: 0.5rem;
+  font-weight: 650;
+  color: #444;
+}
+
+/* Publication titles */
+.publication-list em {
+  font-style: italic;
+}
+
+/* Links */
+.publication-list a,
+.publication-list a:visited {
+  text-decoration: none;
+}
+
+.publication-list a:hover {
+  text-decoration: underline;
+}
+
+/* Make the page feel less cramped on wide screens */
+main.content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Reduce spacing between consecutive paragraphs inside publication entries */
+.publication-list p {
+  margin-top: 0.15rem;
+  margin-bottom: 0.15rem;
+}
+
+/* Optional: slightly de-emphasize journal lines if you later wrap them in spans */
+.pub-meta {
+  color: #666;
+}
+
+/* =========================
+   Mobile adjustments
+   ========================= */
+
+@media (max-width: 768px) {
+  .publication-list li {
+    padding-left: 0;
+    text-indent: 0;
+    margin-bottom: 1.1rem;
+  }
+
+  main.content {
+    max-width: 100%;
+  }
+}

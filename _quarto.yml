@@ -5,6 +5,8 @@ project:
 website:
   title: Rui Wang
   navbar:
+    background: primary
+    search: true
     right:
       - href: index.qmd
         text: About
@@ -20,7 +22,7 @@ website:
 format:
   html:
      theme:
-      light: flatly
+      light: minty
       dark: darkly
      css: styles/styles.css
      toc: true

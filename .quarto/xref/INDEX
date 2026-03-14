@@ -111,5 +111,11 @@
   },
   "pages/blog.qmd": {
     "blog.html": "86f320c4"
+  },
+  "blogs/post1.qmd": {
+    "post1.html": "5249b9ea"
+  },
+  "blogs/post2.qmd": {
+    "post2.html": "180d20a5"
   }
 }

@@ -1,5 +1,6 @@
 ---
 title: Teaching
+title-block-banner: true
 ---
 
 <!-- ### Instructor -->

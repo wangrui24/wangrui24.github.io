@@ -39,7 +39,7 @@
     "href": "pages/blog.html",
     "title": "Blog",
     "section": "",
-    "text": "More Musings\n\n\n\n\n\n\n\n\nJan 10, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nRandom Thought I had Today\n\n\n\n\n\n\n\n\nJan 1, 2026\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\nMore Musings\n\n\n\n\n\n\nJan 10, 2026\n\n\n\n\n\n\n\n\n\n\n\nSome suggestions on applying PhD programs in biostatistics\n\n\n\n\n\n\nJan 1, 2026\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "pages/resources.html",
@@ -142,9 +142,9 @@
   {
     "objectID": "pages/research.html",
     "href": "pages/research.html",
-    "title": "Research and Publications",
+    "title": "Research",
     "section": "",
-    "text": "Description of Research Area"
+    "text": "Working Papers\n\n\n\n\nNo matching items\n\n\n\nTalks\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "pages/research.html#research-area-two",
@@ -257,5 +257,47 @@
     "title": "Publications",
     "section": "Published and Forthcoming",
     "text": "Published and Forthcoming\n\n2026\n\n\nWang, R., Heagerty, P., Chan, K. C. G., Suri, P. (2026).\nEstimating controlled direct treatment effects on pain intensity using structural mean models: a general approach for pain randomized controlled trials.\nForthcoming at Pain Reports.\n\n\n\n\n2025\n\n\nJoshi, M. A., Manubolu, V. S., Kinninger, A., Wang, R., McClelland, R. L., Roy, R. K., Budoff, M. J. (2025).\nSex Differences in Aortic Arch Calcification with Zero Coronary Artery Calcium.\nHeart, Lung and Circulation.\nDOI\nDeng, Y., Wang, R. (2025).\nAdjusted Nelson–Aalen Estimators by Inverse Treatment Probability Weighting With an Estimated Propensity Score.\nStatistics in Medicine, 44:e70085.\nDOI\n\n\n\n\n2024\n\n\nBarforoshi, S., Manubolu, V. S., Wang, R., McClelland, R. L., Budoff, M. J. (2024).\nIncremental value of ABI and CAC beyond traditional risk markers in long-term prediction of cardiovascular disease incidence in participants with diabetes and impaired fasting glucose: Multi-Ethnic Study of Atherosclerosis.\nAtherosclerosis, 117186.\nDOI\nIchikawa, K., Wang, R., McClelland, R. L., Manubolu, V. S., Susarla, S., Lee, D., Pourafkari, L., Fazlalizadeh, H., Aldana-Bitar, J., Robin, R., Kinninger, A., Roy, S. K., Post, W. S., Budoff, M. J. (2024).\nThe prognostic value of thoracic aortic calcification comparison with coronary artery calcification.\nHeart.\nDOI\n\n\n\n\n2022\n\n\nWang, R., Wang, J., Hu, T., Zhou, X.-H. (2022).\nPopulation-Level Effectiveness of COVID-19 Vaccination Program in the United States: Causal Analysis Based on Structural Nested Mean Model.\nVaccines.\nDOI\n\n\n\n\n2021\n\n\nDeng, Y., Chen, F., Li, Y., Qian, K., Wang, R., Zhou, X.-H. (2021).\nA powerful test for the maximum treatment effect in thorough QT/QTc studies.\nStatistics in Medicine, 40(8), 1947–1959.\nDOI"
+  },
+  {
+    "objectID": "research.html",
+    "href": "research.html",
+    "title": "Research",
+    "section": "",
+    "text": "More Musings\n\n\n\n\n\n\n\n\n\nJan 10, 2026\n\n\n\n\n\n\n\n\n\n\n\nRandom Thought I had Today\n\n\n\n\n\n\n\n\n\nJan 1, 2026\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/post2.html",
+    "href": "posts/post2.html",
+    "title": "More Musings",
+    "section": "",
+    "text": "The quick brown fox jumps over the lazy dog"
+  },
+  {
+    "objectID": "pages/research.html#research-projects",
+    "href": "pages/research.html#research-projects",
+    "title": "Research",
+    "section": "",
+    "text": "listing: contents: posts type: grid"
+  },
+  {
+    "objectID": "posts/post1.html",
+    "href": "posts/post1.html",
+    "title": "Random Thought I had Today",
+    "section": "",
+    "text": "The quick brown fox jumps over the lazy dog"
+  },
+  {
+    "objectID": "blogs/post1.html",
+    "href": "blogs/post1.html",
+    "title": "Some suggestions on applying PhD programs in biostatistics",
+    "section": "",
+    "text": "The quick brown fox jumps over the lazy dog"
+  },
+  {
+    "objectID": "blogs/post2.html",
+    "href": "blogs/post2.html",
+    "title": "More Musings",
+    "section": "",
+    "text": "The quick brown fox jumps over the lazy dog"
   }
 ]

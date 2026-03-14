@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Research and Publications – Rui Wang</title>
+<title>Research – Rui Wang</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -42,9 +44,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f93c2b1f3f0577f377aefa4848a86a36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-0d4a9d19931feb4fee1ddab4b2489000.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-f93c2b1f3f0577f377aefa4848a86a36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-0444fe2f0ed0bd01b45bf543c7ebf396.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-223a4d25e70bf6005a455c54fa72832d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-0444fe2f0ed0bd01b45bf543c7ebf396.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,7 +74,93 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-working-papers-list .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-date','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: [],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-working-papers-list'] = new List('listing-working-papers-list', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-talks-list .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-date','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: [],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-talks-list'] = new List('listing-talks-list', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles/styles.css">
 </head>
@@ -269,6 +357,10 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link active" href="../pages/research.html" aria-current="page"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../files/CV_new.pdf"> 
 <span class="menu-text">CV/Resume</span></a>
   </li>  
@@ -281,7 +373,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -289,29 +381,23 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#research-area-one" id="toc-research-area-one" class="nav-link active" data-scroll-target="#research-area-one">Research Area One</a></li>
-  <li><a href="#presentations-and-code" id="toc-presentations-and-code" class="nav-link" data-scroll-target="#presentations-and-code">Presentations and Code</a></li>
-  <li><a href="#publications-and-manuscripts" id="toc-publications-and-manuscripts" class="nav-link" data-scroll-target="#publications-and-manuscripts">Publications and Manuscripts</a></li>
-  <li><a href="#research-area-two" id="toc-research-area-two" class="nav-link" data-scroll-target="#research-area-two">Research Area Two</a>
-  <ul class="collapse">
-  <li><a href="#presentations-and-code-1" id="toc-presentations-and-code-1" class="nav-link" data-scroll-target="#presentations-and-code-1">Presentations and Code</a></li>
-  <li><a href="#publications-and-manuscripts-1" id="toc-publications-and-manuscripts-1" class="nav-link" data-scroll-target="#publications-and-manuscripts-1">Publications and Manuscripts</a></li>
-  </ul></li>
+  <li><a href="#working-papers" id="toc-working-papers" class="nav-link active" data-scroll-target="#working-papers">Working Papers</a></li>
+  <li><a href="#talks" id="toc-talks" class="nav-link" data-scroll-target="#talks">Talks</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Research and Publications</h1>
+<h1 class="title">Research</h1>
 </div>
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page-left">
 
     
   
@@ -323,37 +409,26 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="research-area-one" class="level3">
-<h3 class="anchored" data-anchor-id="research-area-one">Research Area One</h3>
-<p><img src="../files/elephant.png" class="img-fluid" style="width:40.0%" alt="A drawing of an elephant. A placeholder for a cool figure related to your project. Alt text should describe the figure you use in enough detail for someone to understand it without seeing it."></p>
-<p>Description of Research Area</p>
+<section id="working-papers" class="level1">
+<h1>Working Papers</h1>
+<div id="listing-working-papers-list" class="quarto-listing quarto-listing-container-default">
+<div class="list quarto-listing-default">
+
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
 </section>
-<section id="presentations-and-code" class="level3">
-<h3 class="anchored" data-anchor-id="presentations-and-code">Presentations and Code</h3>
-<p><a href="https://github.com">Talk Name</a> (Date, Event name or location)</p>
-<p><a href="https://github.com">Repository Name</a> (Code purpose)</p>
-</section>
-<section id="publications-and-manuscripts" class="level3">
-<h3 class="anchored" data-anchor-id="publications-and-manuscripts">Publications and Manuscripts</h3>
-<p><strong>Your name</strong>, Author (YYYY). <a href="https://doi.org">title</a>. <em>Journal.</em></p>
-<p><strong>Your name</strong>, Author (Preprint). <a href="https://arxiv.org/">title</a>.</p>
-</section>
-<section id="research-area-two" class="level2">
-<h2 class="anchored" data-anchor-id="research-area-two">Research Area Two</h2>
-<p><img src="../files/elephant.png" class="img-fluid" style="width:40.0%" alt="A drawing of an elephant. A placeholder for a cool figure related to your project. Alt text should describe the figure you use in enough detail for someone to understand it without seeing it."></p>
-<p>Description of Research Area</p>
-<section id="presentations-and-code-1" class="level3">
-<h3 class="anchored" data-anchor-id="presentations-and-code-1">Presentations and Code</h3>
-<p><a href="https://github.com">Talk Name</a> (Date, Event name or location)</p>
-<p><a href="https://github.com">Repository Name</a> (Code purpose)</p>
-</section>
-<section id="publications-and-manuscripts-1" class="level3">
-<h3 class="anchored" data-anchor-id="publications-and-manuscripts-1">Publications and Manuscripts</h3>
-<p><strong>Your name</strong>, Author (YYYY). <a href="https://doi.org">title</a>. <em>Journal.</em></p>
-<p><strong>Your name</strong>, Author (Preprint). <a href="https://arxiv.org/">title</a>.</p>
+<section id="talks" class="level1">
+<h1>Talks</h1>
+<div id="listing-talks-list" class="quarto-listing quarto-listing-container-default">
+<div class="list quarto-listing-default">
+
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
 
 
-</section>
+
 </section>
 
 </main> <!-- /main -->

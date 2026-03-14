@@ -1,8 +1,16 @@
 ---
 title: "Blog"
 listing:
-  contents:
-    - "../posts/*.qmd"
+  contents: "../blogs/*qmd"
+  feed: true
+  sort: "date desc"
+  type: "grid"
+  categories: true
+  sort-ui: true
+  filter-ui: true
+  image-placeholder: images/image-placeholder.png
+  fields: [image, date, title, description]
+page-layout: full
+title-block-banner: true
 ---
-  
   

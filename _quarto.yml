@@ -14,7 +14,7 @@ website:
         text: Publications
       - href: pages/teaching.qmd
         text: Teaching
-      - href: pages/research.qmd
+      #- href: pages/research.qmd
       - text: CV/Resume
         href: files/CV_new.pdf
 

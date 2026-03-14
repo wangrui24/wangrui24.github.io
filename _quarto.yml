@@ -22,7 +22,7 @@ website:
 format:
   html:
      theme:
-      light: minty
+      light: yeti
       dark: darkly
      css: styles/styles.css
      toc: true

@@ -1,10 +1,11 @@
 ---
 title: Publications
-toc: false
 ---
 
 
 ## Preprints / Submitted
+
+- **Wang, R.**, Osom, A., Zhang, B. (2026+). Generalized projection tests for function-valued parameters with applications to testing structural causal assumptions. 
 
 - Deng, Y., **Wang, R.**, Zhan, X. (2026+). Randomized interventional effects for semicompeteting risks, with application to allogeneic stem cell transplantation study.  [arXiv](https://arxiv.org/abs/2412.06114)
 
@@ -20,7 +21,7 @@ toc: false
 
 ### 2026
 
-1. **Wang, R.**, Heagerty, P., Chan, KCG., Suri, P. (2026). Estimating controlled direct treatment effects on pain intensity using structural mean models: a general approach for pain randomized controlled trials. Accepted at *Pain Reports*.
+1. **Wang, R.**, Heagerty, P., Chan, KCG., Suri, P. (2026). Estimating controlled direct treatment effects on pain intensity using structural mean models: a general approach for pain randomized controlled trials. *Pain Reports*.  [DOI](http://dx.doi.org/10.1097/PR9.0000000000001409)
 
    
 ### 2025

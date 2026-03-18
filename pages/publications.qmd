@@ -6,7 +6,7 @@ title-block-banner: true
 
 ## Preprints / Submitted
 
-- **Wang, R.**, Osom, A., Zhang, B. (2026+). Generalized projection tests for function-valued parameters with applications to testing structural causal assumptions. 
+- **Wang, R.**, Osom, A., Zhang, B. (2026+). Generalized projection tests for function-valued parameters with applications to testing structural causal assumptions. [arXiv](https://arxiv.org/abs/2603.13681)
 
 - Deng, Y., **Wang, R.**, Zhan, X. (2026+). Randomized interventional effects for semicompeteting risks, with application to allogeneic stem cell transplantation study.  [arXiv](https://arxiv.org/abs/2412.06114)
 

@@ -80,16 +80,6 @@
     ]
   },
   {
-    "objectID": "02-parametric-estimation.html",
-    "href": "02-parametric-estimation.html",
-    "title": "4  Estimation in Parametric Models",
-    "section": "",
-    "text": "The source file for this chapter, Chapters/Estimation_parametric_model.tex, is currently empty in the manuscript.\nThis placeholder keeps the book structure ready for expansion. A natural continuation would be to develop:\n\nlikelihoods for right-censored data,\nexponential and Weibull regression models,\nparameter interpretation and inference,\nand worked examples with survival datasets.",
-    "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Estimation in Parametric Models</span>"
-    ]
-  },
-  {
     "objectID": "references.html",
     "href": "references.html",
     "title": "References",

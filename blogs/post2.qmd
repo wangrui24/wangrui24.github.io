@@ -1,6 +1,9 @@
 ---
-title: More Musings
+title: Introduction to survival analysis
 date: January 10, 2026
+image: "../files/survival.png"
 ---
 
-The quick brown fox jumps over the lazy dog
+This post shares my Quarto book, *An Introduction to Survival Analysis*.
+
+You can read the book here: [An Introduction to Survival Analysis](../book/).

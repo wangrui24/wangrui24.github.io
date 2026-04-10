@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: docs
+  resources:
+    - book/**
 
 website:
   title: Rui Wang
@@ -14,7 +16,7 @@ website:
         text: Publications
       - href: pages/teaching.qmd
         text: Teaching
-      #- href: pages/research.qmd
+      - href: pages/blog.qmd
       - text: CV/Resume
         href: files/CV_new.pdf
 

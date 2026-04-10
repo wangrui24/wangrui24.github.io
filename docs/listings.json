@@ -2,15 +2,7 @@
   {
     "listing": "/pages/blog.html",
     "items": [
-      "/blogs/post2.html",
-      "/blogs/post1.html"
-    ]
-  },
-  {
-    "listing": "/research.html",
-    "items": [
-      "/posts/post2.html",
-      "/posts/post1.html"
+      "/blogs/post2.html"
     ]
   },
   {

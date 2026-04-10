@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; Introduction – An Introduction to Survival Analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./02-parametric-estimation.html" rel="next">
+<link href="./preface.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-27c261d06b905028a18691de25d09dde.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-introduction.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">An Introduction to Survival Analysis</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">An Introduction to Survival Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduction.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-parametric-estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estimation in Parametric Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction-to-lifetime-data-analysis" id="toc-introduction-to-lifetime-data-analysis" class="nav-link active" data-scroll-target="#introduction-to-lifetime-data-analysis"><span class="header-section-number">3.1</span> Introduction to Lifetime Data Analysis</a>
+  <ul class="collapse">
+  <li><a href="#what-makes-lifetime-data-special" id="toc-what-makes-lifetime-data-special" class="nav-link" data-scroll-target="#what-makes-lifetime-data-special"><span class="header-section-number">3.1.1</span> What Makes Lifetime Data Special?</a></li>
+  <li><a href="#examples-of-lifetime-data" id="toc-examples-of-lifetime-data" class="nav-link" data-scroll-target="#examples-of-lifetime-data"><span class="header-section-number">3.1.2</span> Examples of Lifetime Data</a></li>
+  <li><a href="#a-simple-data-example" id="toc-a-simple-data-example" class="nav-link" data-scroll-target="#a-simple-data-example"><span class="header-section-number">3.1.3</span> A Simple Data Example</a></li>
+  <li><a href="#why-survival-analysis-matters" id="toc-why-survival-analysis-matters" class="nav-link" data-scroll-target="#why-survival-analysis-matters"><span class="header-section-number">3.1.4</span> Why Survival Analysis Matters</a></li>
+  </ul></li>
+  <li><a href="#basic-probability-concepts-for-survival-analysis" id="toc-basic-probability-concepts-for-survival-analysis" class="nav-link" data-scroll-target="#basic-probability-concepts-for-survival-analysis"><span class="header-section-number">3.2</span> Basic Probability Concepts for Survival Analysis</a>
+  <ul class="collapse">
+  <li><a href="#distribution-function" id="toc-distribution-function" class="nav-link" data-scroll-target="#distribution-function"><span class="header-section-number">3.2.1</span> Distribution Function</a></li>
+  <li><a href="#density-function" id="toc-density-function" class="nav-link" data-scroll-target="#density-function"><span class="header-section-number">3.2.2</span> Density Function</a></li>
+  <li><a href="#survival-function" id="toc-survival-function" class="nav-link" data-scroll-target="#survival-function"><span class="header-section-number">3.2.3</span> Survival Function</a></li>
+  <li><a href="#hazard-function" id="toc-hazard-function" class="nav-link" data-scroll-target="#hazard-function"><span class="header-section-number">3.2.4</span> Hazard Function</a></li>
+  <li><a href="#relationship-between-hazard-density-and-survival" id="toc-relationship-between-hazard-density-and-survival" class="nav-link" data-scroll-target="#relationship-between-hazard-density-and-survival"><span class="header-section-number">3.2.5</span> Relationship Between Hazard, Density, and Survival</a></li>
+  <li><a href="#cumulative-hazard-function" id="toc-cumulative-hazard-function" class="nav-link" data-scroll-target="#cumulative-hazard-function"><span class="header-section-number">3.2.6</span> Cumulative Hazard Function</a></li>
+  <li><a href="#relationship-between-survival-and-cumulative-hazard" id="toc-relationship-between-survival-and-cumulative-hazard" class="nav-link" data-scroll-target="#relationship-between-survival-and-cumulative-hazard"><span class="header-section-number">3.2.7</span> Relationship Between Survival and Cumulative Hazard</a></li>
+  <li><a href="#summary-of-relationships" id="toc-summary-of-relationships" class="nav-link" data-scroll-target="#summary-of-relationships"><span class="header-section-number">3.2.8</span> Summary of Relationships</a></li>
+  <li><a href="#an-example-exponential-survival-time" id="toc-an-example-exponential-survival-time" class="nav-link" data-scroll-target="#an-example-exponential-survival-time"><span class="header-section-number">3.2.9</span> An Example: Exponential Survival Time</a></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation">Interpretation</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  </ul></li>
+  <li><a href="#truncation-and-censoring" id="toc-truncation-and-censoring" class="nav-link" data-scroll-target="#truncation-and-censoring"><span class="header-section-number">3.3</span> Truncation and Censoring</a>
+  <ul class="collapse">
+  <li><a href="#censoring" id="toc-censoring" class="nav-link" data-scroll-target="#censoring"><span class="header-section-number">3.3.1</span> Censoring</a></li>
+  <li><a href="#a-comparison-of-the-main-types-of-censoring" id="toc-a-comparison-of-the-main-types-of-censoring" class="nav-link" data-scroll-target="#a-comparison-of-the-main-types-of-censoring"><span class="header-section-number">3.3.2</span> A Comparison of the Main Types of Censoring</a></li>
+  <li><a href="#why-censoring-matters" id="toc-why-censoring-matters" class="nav-link" data-scroll-target="#why-censoring-matters"><span class="header-section-number">3.3.3</span> Why Censoring Matters</a></li>
+  <li><a href="#truncation" id="toc-truncation" class="nav-link" data-scroll-target="#truncation"><span class="header-section-number">3.3.4</span> Truncation</a></li>
+  <li><a href="#censoring-versus-truncation" id="toc-censoring-versus-truncation" class="nav-link" data-scroll-target="#censoring-versus-truncation"><span class="header-section-number">3.3.5</span> Censoring Versus Truncation</a></li>
+  <li><a href="#simple-schematic-summary" id="toc-simple-schematic-summary" class="nav-link" data-scroll-target="#simple-schematic-summary"><span class="header-section-number">3.3.6</span> Simple Schematic Summary</a></li>
+  <li><a href="#summary-1" id="toc-summary-1" class="nav-link" data-scroll-target="#summary-1">Summary</a></li>
+  </ul></li>
+  <li><a href="#common-distributions-for-modeling-lifetime-data" id="toc-common-distributions-for-modeling-lifetime-data" class="nav-link" data-scroll-target="#common-distributions-for-modeling-lifetime-data"><span class="header-section-number">3.4</span> Common Distributions for Modeling Lifetime Data</a>
+  <ul class="collapse">
+  <li><a href="#the-exponential-distribution" id="toc-the-exponential-distribution" class="nav-link" data-scroll-target="#the-exponential-distribution"><span class="header-section-number">3.4.1</span> The Exponential Distribution</a></li>
+  <li><a href="#the-weibull-distribution" id="toc-the-weibull-distribution" class="nav-link" data-scroll-target="#the-weibull-distribution"><span class="header-section-number">3.4.2</span> The Weibull Distribution</a></li>
+  <li><a href="#the-log-normal-distribution" id="toc-the-log-normal-distribution" class="nav-link" data-scroll-target="#the-log-normal-distribution"><span class="header-section-number">3.4.3</span> The Log-Normal Distribution</a></li>
+  <li><a href="#comparison-of-the-three-distributions" id="toc-comparison-of-the-three-distributions" class="nav-link" data-scroll-target="#comparison-of-the-three-distributions"><span class="header-section-number">3.4.4</span> Comparison of the Three Distributions</a></li>
+  </ul></li>
+  <li><a href="#review-of-maximum-likelihood-estimation" id="toc-review-of-maximum-likelihood-estimation" class="nav-link" data-scroll-target="#review-of-maximum-likelihood-estimation"><span class="header-section-number">3.5</span> Review of Maximum Likelihood Estimation</a>
+  <ul class="collapse">
+  <li><a href="#general-idea-of-maximum-likelihood-estimation" id="toc-general-idea-of-maximum-likelihood-estimation" class="nav-link" data-scroll-target="#general-idea-of-maximum-likelihood-estimation"><span class="header-section-number">3.5.1</span> General Idea of Maximum Likelihood Estimation</a></li>
+  <li><a href="#a-simple-example-exponential-distribution" id="toc-a-simple-example-exponential-distribution" class="nav-link" data-scroll-target="#a-simple-example-exponential-distribution"><span class="header-section-number">3.5.2</span> A Simple Example: Exponential Distribution</a></li>
+  <li><a href="#weibull-distribution" id="toc-weibull-distribution" class="nav-link" data-scroll-target="#weibull-distribution"><span class="header-section-number">3.5.3</span> Weibull Distribution</a></li>
+  <li><a href="#special-case-exponential-distribution-as-a-weibull-model" id="toc-special-case-exponential-distribution-as-a-weibull-model" class="nav-link" data-scroll-target="#special-case-exponential-distribution-as-a-weibull-model"><span class="header-section-number">3.5.4</span> Special Case: Exponential Distribution as a Weibull Model</a></li>
+  <li><a href="#a-note-on-censored-data" id="toc-a-note-on-censored-data" class="nav-link" data-scroll-target="#a-note-on-censored-data"><span class="header-section-number">3.5.5</span> A Note on Censored Data</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction-to-lifetime-data-analysis" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="introduction-to-lifetime-data-analysis"><span class="header-section-number">3.1</span> Introduction to Lifetime Data Analysis</h2>
+<p>Survival analysis is a branch of statistics concerned with the analysis of <em>time-to-event data</em>, also called <em>lifetime data</em>. In many studies, the main outcome of interest is not simply whether an event occurs, but <em>when</em> it occurs. Examples include the time from a cancer diagnosis to death, the time from surgery to disease recurrence, the time until a machine breaks down, or the time until a customer stops using a service. Because the outcome is a time measurement, survival analysis requires methods that are different from those used for ordinary continuous or binary outcomes.</p>
+<p>The main goal of survival analysis is to describe and compare the distribution of event times. Depending on the scientific question, we may be interested in several related objectives. First, we may want to summarize the typical pattern of event times in a population, such as the probability that a subject survives beyond a given time point. Second, we may want to compare the survival experiences of two or more groups, for example, patients receiving different treatments. Third, we may want to study how explanatory variables, or <em>covariates</em>, are associated with the timing of the event.</p>
+<p>To make these ideas concrete, suppose that for each individual we define a nonnegative random variable <span class="math display">\[T = \text{time from a well-defined starting point to the occurrence of an event}.\]</span> The starting point could be diagnosis, study enrollment, beginning of treatment, installation of a machine, or the first purchase by a customer. The event could be death, relapse, failure, or cancellation of a subscription. The variable <span class="math inline">\(T\)</span> is called the <em>survival time</em>, <em>failure time</em>, or <em>event time</em>, depending on the context.</p>
+<p>In practice, a survival dataset often contains the following pieces of information for each subject:</p>
+<ul>
+<li><p>the observed follow-up time,</p></li>
+<li><p>an event indicator showing whether the event was observed,</p></li>
+<li><p>a collection of covariates.</p></li>
+</ul>
+<p>Let <span class="math display">\[Y = \text{observed follow-up time},
+\qquad
+\Delta =
+\begin{cases}
+1, &amp; \text{if the event is observed},\\
+0, &amp; \text{if the event is not observed during follow-up}.
+\end{cases}\]</span> Then a typical observation can be written as <span class="math display">\[(Y,\Delta,X),\]</span> where <span class="math inline">\(X\)</span> represents a vector of covariates such as age, sex, treatment assignment, biomarker values, or other relevant subject characteristics.</p>
+<p>The event indicator <span class="math inline">\(\Delta\)</span> is needed because, in many studies, the true event time is not observed for every subject. For example, a patient may still be alive when the study ends, or a machine may still be functioning at the end of the observation period. In such cases, we only know that the event time exceeds the observed follow-up time. This feature, called <em>censoring</em>, is one of the main reasons why survival analysis requires special methods. We will discuss censoring and related concepts more carefully later in this chapter.</p>
+<section id="what-makes-lifetime-data-special" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="what-makes-lifetime-data-special"><span class="header-section-number">3.1.1</span> What Makes Lifetime Data Special?</h3>
+<p>Lifetime data have several features that distinguish them from other types of data.</p>
+<p>First, the response variable is a time, so it is always nonnegative: <span class="math display">\[T \geq 0.\]</span> This naturally leads to probability models supported on <span class="math inline">\([0,\infty)\)</span>.</p>
+<p>Second, the outcome is often incompletely observed because of censoring. Standard statistical methods that ignore censoring can lead to biased conclusions.</p>
+<p>Third, in many applications the distribution of <span class="math inline">\(T\)</span> is asymmetric. For example, event times are often right-skewed: many individuals experience the event relatively early, while a smaller number survive for a long time.</p>
+<p>Fourth, the scientific interpretation is often dynamic. Instead of asking only whether an event occurs, we may ask questions such as:</p>
+<ul>
+<li><p>What is the probability that an individual survives beyond time <span class="math inline">\(t\)</span>?</p></li>
+<li><p>Among individuals who have survived up to time <span class="math inline">\(t\)</span>, how likely is the event to occur soon after <span class="math inline">\(t\)</span>?</p></li>
+<li><p>How does treatment affect the timing of the event?</p></li>
+</ul>
+<p>These questions motivate the key concepts of the survival function and hazard function, which will be introduced in the next section.</p>
+</section>
+<section id="examples-of-lifetime-data" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="examples-of-lifetime-data"><span class="header-section-number">3.1.2</span> Examples of Lifetime Data</h3>
+<p>Survival analysis arose originally in medical research, but it is now widely used in many fields. Below are some common examples. Examples <a href="#exm-time-to-death" class="quarto-xref">Example&nbsp;<span>3.1</span></a>, <a href="#exm-time-to-disease-relapse" class="quarto-xref">Example&nbsp;<span>3.2</span></a>, <a href="#exm-time-to-machine-failure" class="quarto-xref">Example&nbsp;<span>3.3</span></a>, and <a href="#exm-time-to-customer-churn" class="quarto-xref">Example&nbsp;<span>3.4</span></a> illustrate this range of applications.</p>
+<div id="exm-time-to-death" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.1 (Time to death)</strong></span> In a clinical study, researchers may record the time from diagnosis of a disease to death. Here the event is death, and the time scale may be measured in days, months, or years. Covariates could include treatment group, age, disease stage, and other clinical variables.</p>
+</div>
+<div id="exm-time-to-disease-relapse" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.2 (Time to disease relapse)</strong></span> For patients who achieve remission after treatment, researchers may study the time from remission to relapse. In this setting, the event is recurrence of disease. Some patients may not relapse before the study ends, so their times are right-censored.</p>
+</div>
+<div id="exm-time-to-machine-failure" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.3 (Time to machine failure)</strong></span> In engineering, one may study the lifetime of a mechanical component. The event is system failure, and the goal may be to understand product reliability or compare materials under different operating conditions.</p>
+</div>
+<div id="exm-time-to-customer-churn" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.4 (Time to customer churn)</strong></span> In business and economics, companies may study the time from a customer’s first subscription to cancellation of service. The event is customer churn. Covariates may include age, region, subscription plan, and previous usage patterns.</p>
+</div>
+<p>Although these examples come from different areas, they share a common statistical structure: each subject is followed over time until an event occurs or observation ends.</p>
+</section>
+<section id="a-simple-data-example" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="a-simple-data-example"><span class="header-section-number">3.1.3</span> A Simple Data Example</h3>
+<p>A small hypothetical dataset might look like Table <a href="#tbl-survival-data-example" class="quarto-xref">Table&nbsp;<span>3.1</span></a>.</p>
+<div id="tbl-survival-data-example" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-survival-data-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.1: A simple example of survival data.
+</figcaption>
+<div aria-describedby="tbl-survival-data-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 26%">
+<col style="width: 34%">
+<col style="width: 6%">
+<col style="width: 14%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Subject</th>
+<th style="text-align: center;">Follow-up time <span class="math inline">\(Y\)</span></th>
+<th style="text-align: center;">Event indicator <span class="math inline">\(\Delta\)</span></th>
+<th style="text-align: center;">Age</th>
+<th style="text-align: center;">Treatment</th>
+<th style="text-align: center;">Sex</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">5.2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">63</td>
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">F</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">8.7</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">57</td>
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">M</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3.1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">71</td>
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">F</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">10.0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">49</td>
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">F</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">6.4</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">68</td>
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">M</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>For Subject 1, the event was observed at time <span class="math inline">\(5.2\)</span>, so <span class="math inline">\(\Delta=1\)</span>. For Subject 2, the event was not observed during the follow-up period of length <span class="math inline">\(8.7\)</span>, so <span class="math inline">\(\Delta=0\)</span>. Thus, we only know that the true event time for Subject 2 is greater than <span class="math inline">\(8.7\)</span>.</p>
+</section>
+<section id="why-survival-analysis-matters" class="level3" data-number="3.1.4">
+<h3 data-number="3.1.4" class="anchored" data-anchor-id="why-survival-analysis-matters"><span class="header-section-number">3.1.4</span> Why Survival Analysis Matters</h3>
+<p>If we ignore the timing of events and only record whether the event occurred, we lose important information. For example, two treatments might lead to the same proportion of deaths by the end of a study, but one treatment may substantially delay death relative to the other. Survival analysis allows us to use the full information contained in event times, while properly handling incomplete observations.</p>
+<p>For this reason, survival analysis plays a central role in medicine, public health, engineering, economics, sociology, and many other disciplines. In the sections that follow, we will introduce the basic probabilistic quantities used to describe lifetime data and develop the tools needed to analyze them.</p>
+</section>
+</section>
+<section id="basic-probability-concepts-for-survival-analysis" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="basic-probability-concepts-for-survival-analysis"><span class="header-section-number">3.2</span> Basic Probability Concepts for Survival Analysis</h2>
+<p>In survival analysis, the main object of interest is a nonnegative random variable <span class="math display">\[T = \text{the time from a well-defined starting point to the event of interest}.\]</span> To describe the distribution of <span class="math inline">\(T\)</span>, we use several closely related probability functions. In this section, we introduce the <em>distribution function</em>, <em>density function</em>, <em>survival function</em>, <em>hazard function</em>, and <em>cumulative hazard function</em>, and explain how they are connected.</p>
+<p>Throughout this section, we assume that <span class="math inline">\(T\)</span> is a continuous random variable taking values in <span class="math inline">\([0,\infty)\)</span>.</p>
+<section id="distribution-function" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="distribution-function"><span class="header-section-number">3.2.1</span> Distribution Function</h3>
+<p>The <em>distribution function</em>, or <em>cumulative distribution function</em> (CDF), of <span class="math inline">\(T\)</span> is defined by <span class="math display">\[F(t) = P(T \le t), \qquad t \ge 0.\]</span> This gives the probability that the event occurs by time <span class="math inline">\(t\)</span>.</p>
+<p>For example, if <span class="math display">\[F(5)=0.30,\]</span> then there is a <span class="math inline">\(30\%\)</span> chance that the event has occurred by time <span class="math inline">\(5\)</span>.</p>
+<p>The function <span class="math inline">\(F(t)\)</span> has the following properties:</p>
+<ul>
+<li><p><span class="math inline">\(0 \le F(t) \le 1\)</span> for all <span class="math inline">\(t\)</span>,</p></li>
+<li><p><span class="math inline">\(F(t)\)</span> is nondecreasing in <span class="math inline">\(t\)</span>,</p></li>
+<li><p><span class="math inline">\(F(0) = P(T \le 0)\)</span>,</p></li>
+<li><p><span class="math inline">\(\lim_{t\to\infty} F(t)=1\)</span> if every subject eventually experiences the event.</p></li>
+</ul>
+</section>
+<section id="density-function" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="density-function"><span class="header-section-number">3.2.2</span> Density Function</h3>
+<p>If <span class="math inline">\(T\)</span> is continuous, its <em>density function</em> is denoted by <span class="math inline">\(f(t)\)</span> and satisfies <span class="math display">\[F(t)=\int_0^t f(u)\,du.\]</span> Equivalently, when <span class="math inline">\(F\)</span> is differentiable, <span class="math display">\[f(t)=F'(t).\]</span></p>
+<p>The density function describes how the event times are distributed over time. Roughly speaking, <span class="math inline">\(f(t)\)</span> tells us how concentrated the event times are near the value <span class="math inline">\(t\)</span>.</p>
+<p>For a small number <span class="math inline">\(h&gt;0\)</span>, <span class="math display">\[P(t \le T &lt; t+h) \approx f(t)h.\]</span> Thus, <span class="math inline">\(f(t)\)</span> can be interpreted as the approximate probability per unit time of failing near time <span class="math inline">\(t\)</span>.</p>
+<p>The density function has the following properties:</p>
+<ul>
+<li><p><span class="math inline">\(f(t)\ge 0\)</span> for all <span class="math inline">\(t\)</span>,</p></li>
+<li><p><span class="math inline">\(\int_0^\infty f(t)\,dt = 1\)</span>.</p></li>
+</ul>
+</section>
+<section id="survival-function" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="survival-function"><span class="header-section-number">3.2.3</span> Survival Function</h3>
+<p>A central quantity in survival analysis is the <em>survival function</em>, defined by <span class="math display">\[S(t)=P(T&gt;t), \qquad t\ge 0.\]</span> This is the probability that the subject survives beyond time <span class="math inline">\(t\)</span>, or equivalently, that the event has not occurred by time <span class="math inline">\(t\)</span>.</p>
+<p>For example, if <span class="math display">\[S(5)=0.70,\]</span> then there is a <span class="math inline">\(70\%\)</span> chance that the event time exceeds <span class="math inline">\(5\)</span>.</p>
+<p>The survival function is directly related to the distribution function: <span class="math display">\[S(t)=1-F(t).\]</span> Indeed, <span class="math display">\[P(T&gt;t)=1-P(T\le t).\]</span></p>
+<p>The survival function has the following properties:</p>
+<ul>
+<li><p><span class="math inline">\(0 \le S(t)\le 1\)</span> for all <span class="math inline">\(t\)</span>,</p></li>
+<li><p><span class="math inline">\(S(0)=P(T&gt;0)\)</span>,</p></li>
+<li><p><span class="math inline">\(S(t)\)</span> is nonincreasing in <span class="math inline">\(t\)</span>,</p></li>
+<li><p><span class="math inline">\(\lim_{t\to\infty} S(t)=0\)</span> if every subject eventually experiences the event.</p></li>
+</ul>
+<p>If <span class="math inline">\(T\)</span> has density <span class="math inline">\(f\)</span>, then <span class="math display">\[S(t)=\int_t^\infty f(u)\,du.\]</span></p>
+</section>
+<section id="hazard-function" class="level3" data-number="3.2.4">
+<h3 data-number="3.2.4" class="anchored" data-anchor-id="hazard-function"><span class="header-section-number">3.2.4</span> Hazard Function</h3>
+<p>The <em>hazard function</em> is one of the most important concepts in survival analysis. It describes the instantaneous risk of experiencing the event at time <span class="math inline">\(t\)</span>, among those who have survived up to time <span class="math inline">\(t\)</span>.</p>
+<p>Formally, the hazard function is defined by <span class="math display">\[\lambda(t)=\lim_{h\to 0^+}\frac{P(t \le T &lt; t+h \mid T\ge t)}{h},\]</span> provided the limit exists.</p>
+<p>This definition can be understood as follows:</p>
+<ul>
+<li><p>first condition on the subject having survived up to time <span class="math inline">\(t\)</span>,</p></li>
+<li><p>then look at the probability that the event occurs in the short interval <span class="math inline">\([t,t+h)\)</span>,</p></li>
+<li><p>divide by the interval length <span class="math inline">\(h\)</span>,</p></li>
+<li><p>then let <span class="math inline">\(h\)</span> go to <span class="math inline">\(0\)</span>.</p></li>
+</ul>
+<p>Thus, <span class="math inline">\(\lambda(t)\)</span> is an <em>instantaneous event rate</em>, not a probability. Since it is a rate, it can be larger than <span class="math inline">\(1\)</span>.</p>
+</section>
+<section id="relationship-between-hazard-density-and-survival" class="level3" data-number="3.2.5">
+<h3 data-number="3.2.5" class="anchored" data-anchor-id="relationship-between-hazard-density-and-survival"><span class="header-section-number">3.2.5</span> Relationship Between Hazard, Density, and Survival</h3>
+<p>We now derive an important formula connecting the hazard function to the density and survival functions.</p>
+<p>Starting from the definition, <span class="math display">\[P(t \le T &lt; t+h \mid T\ge t)
+=
+\frac{P(t \le T &lt; t+h)}{P(T\ge t)}.\]</span> For a continuous random variable, <span class="math display">\[P(t \le T &lt; t+h)\approx f(t)h,
+\qquad
+P(T\ge t)=S(t).\]</span> Therefore, <span class="math display">\[\lambda(t)
+=
+\frac{f(t)}{S(t)},\]</span> whenever <span class="math inline">\(S(t)&gt;0\)</span>.</p>
+<p>This is one of the basic identities in survival analysis: <span class="math display">\[\boxed{\lambda(t)=\frac{f(t)}{S(t)}}.\]</span></p>
+<p>Using <span class="math inline">\(S(t)=1-F(t)\)</span>, we can also write <span class="math display">\[\lambda(t)=\frac{f(t)}{1-F(t)}.\]</span></p>
+<p>Intuitively:</p>
+<ul>
+<li><p><span class="math inline">\(f(t)\)</span> measures how likely the event is to occur near time <span class="math inline">\(t\)</span> in the whole population,</p></li>
+<li><p><span class="math inline">\(S(t)\)</span> measures how many individuals are still event-free at time <span class="math inline">\(t\)</span>,</p></li>
+<li><p><span class="math inline">\(\lambda(t)\)</span> measures the instantaneous risk at time <span class="math inline">\(t\)</span> among those still event-free.</p></li>
+</ul>
+</section>
+<section id="cumulative-hazard-function" class="level3" data-number="3.2.6">
+<h3 data-number="3.2.6" class="anchored" data-anchor-id="cumulative-hazard-function"><span class="header-section-number">3.2.6</span> Cumulative Hazard Function</h3>
+<p>The <em>cumulative hazard function</em> is defined by integrating the hazard function: <span class="math display">\[\Lambda(t)=\int_0^t \lambda(u)\,du.\]</span> This quantity accumulates the hazard over time.</p>
+<p>Although <span class="math inline">\(\Lambda(t)\)</span> does not have as direct a probability interpretation as <span class="math inline">\(F(t)\)</span> or <span class="math inline">\(S(t)\)</span>, it is extremely useful mathematically and plays a central role in survival analysis.</p>
+<p>Since <span class="math inline">\(\lambda(t)\ge 0\)</span>, the cumulative hazard function is nondecreasing in <span class="math inline">\(t\)</span>.</p>
+</section>
+<section id="relationship-between-survival-and-cumulative-hazard" class="level3" data-number="3.2.7">
+<h3 data-number="3.2.7" class="anchored" data-anchor-id="relationship-between-survival-and-cumulative-hazard"><span class="header-section-number">3.2.7</span> Relationship Between Survival and Cumulative Hazard</h3>
+<p>A very important identity is <span class="math display">\[S(t)=\exp\{-\Lambda(t)\}.\]</span> We now show where this comes from.</p>
+<p>Recall that <span class="math display">\[\lambda(t)=\frac{f(t)}{S(t)}.\]</span> Since <span class="math display">\[S(t)=1-F(t),\]</span> we have <span class="math display">\[S'(t)=-f(t).\]</span> Substituting <span class="math inline">\(f(t)=-S'(t)\)</span> into the hazard formula gives <span class="math display">\[\lambda(t)=\frac{-S'(t)}{S(t)}.\]</span> So <span class="math display">\[\frac{S'(t)}{S(t)}=-\lambda(t).\]</span> Integrating both sides from <span class="math inline">\(0\)</span> to <span class="math inline">\(t\)</span>, <span class="math display">\[\int_0^t \frac{S'(u)}{S(u)}\,du
+=
+-\int_0^t \lambda(u)\,du.\]</span> The left-hand side is <span class="math display">\[\log S(t)-\log S(0).\]</span> If we assume <span class="math inline">\(S(0)=1\)</span>, then <span class="math display">\[\log S(t)=-\Lambda(t),\]</span> and therefore <span class="math display">\[\boxed{S(t)=\exp\{-\Lambda(t)\}}.\]</span></p>
+<p>This formula implies that once we know the hazard function, we can recover the survival function. Conversely, once we know the survival function, we can recover the cumulative hazard function through <span class="math display">\[\Lambda(t)=-\log S(t).\]</span></p>
+</section>
+<section id="summary-of-relationships" class="level3" data-number="3.2.8">
+<h3 data-number="3.2.8" class="anchored" data-anchor-id="summary-of-relationships"><span class="header-section-number">3.2.8</span> Summary of Relationships</h3>
+<p>The main functions introduced in this section are all connected. Starting from any one of them, we can often derive the others.</p>
+<p><span class="math display">\[F(t)=P(T\le t),\]</span> <span class="math display">\[S(t)=P(T&gt;t)=1-F(t),\]</span> <span class="math display">\[f(t)=F'(t)=-S'(t),\]</span> <span class="math display">\[\lambda(t)=\frac{f(t)}{S(t)},\]</span> <span class="math display">\[\Lambda(t)=\int_0^t \lambda(u)\,du,\]</span> <span class="math display">\[S(t)=\exp\{-\Lambda(t)\}.\]</span></p>
+<p>These relationships are often summarized in the diagram <span class="math display">\[F(t)
+\longleftrightarrow
+f(t)
+\longleftrightarrow
+S(t)
+\longleftrightarrow
+\lambda(t)
+\longleftrightarrow
+\Lambda(t).\]</span></p>
+</section>
+<section id="an-example-exponential-survival-time" class="level3" data-number="3.2.9">
+<h3 data-number="3.2.9" class="anchored" data-anchor-id="an-example-exponential-survival-time"><span class="header-section-number">3.2.9</span> An Example: Exponential Survival Time</h3>
+<p>To make these definitions more concrete, suppose <span class="math display">\[T \sim \text{Exponential}(\lambda),\]</span> where <span class="math inline">\(\lambda&gt;0\)</span>.</p>
+<p>Then the density function is <span class="math display">\[f(t)=\lambda e^{-\lambda t}, \qquad t\ge 0.\]</span> The distribution function is <span class="math display">\[F(t)=1-e^{-\lambda t}.\]</span> The survival function is <span class="math display">\[S(t)=e^{-\lambda t}.\]</span> The hazard function is <span class="math display">\[\lambda(t)=\frac{f(t)}{S(t)}
+=
+\frac{\lambda e^{-\lambda t}}{e^{-\lambda t}}
+=
+\lambda.\]</span> So the exponential distribution has a <em>constant hazard</em>.</p>
+<p>The cumulative hazard function is <span class="math display">\[\Lambda(t)=\int_0^t \lambda\,du=\lambda t.\]</span> We can verify that <span class="math display">\[S(t)=e^{-\Lambda(t)}=e^{-\lambda t},\]</span> as expected.</p>
+</section>
+<section id="interpretation" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="interpretation">Interpretation</h3>
+<p>It is helpful to keep the following interpretations in mind:</p>
+<ul>
+<li><p><span class="math inline">\(F(t)\)</span>: probability that the event has occurred by time <span class="math inline">\(t\)</span>,</p></li>
+<li><p><span class="math inline">\(S(t)\)</span>: probability that the event has not occurred by time <span class="math inline">\(t\)</span>,</p></li>
+<li><p><span class="math inline">\(f(t)\)</span>: relative concentration of event times around <span class="math inline">\(t\)</span>,</p></li>
+<li><p><span class="math inline">\(\lambda(t)\)</span>: instantaneous risk of event at time <span class="math inline">\(t\)</span> among those still at risk,</p></li>
+<li><p><span class="math inline">\(\Lambda(t)\)</span>: total accumulated hazard up to time <span class="math inline">\(t\)</span>.</p></li>
+</ul>
+<p>Each of these functions gives a different but related view of the distribution of survival times.</p>
+</section>
+<section id="summary" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="summary">Summary</h3>
+<p>In survival analysis, several probability functions are used to describe the distribution of a nonnegative event time <span class="math inline">\(T\)</span>. The distribution function <span class="math inline">\(F(t)\)</span> and density function <span class="math inline">\(f(t)\)</span> are familiar from basic probability. The survival function <span class="math inline">\(S(t)\)</span> gives the probability of surviving beyond time <span class="math inline">\(t\)</span>, while the hazard function <span class="math inline">\(\lambda(t)\)</span> gives the instantaneous event rate at time <span class="math inline">\(t\)</span> among those still at risk. The cumulative hazard function <span class="math inline">\(\Lambda(t)\)</span> is the integral of the hazard over time. These quantities are linked through the identities <span class="math display">\[S(t)=1-F(t), \qquad \lambda(t)=\frac{f(t)}{S(t)}, \qquad S(t)=e^{-\Lambda(t)}.\]</span> These relationships form the foundation for many of the methods developed later in survival analysis.</p>
+</section>
+</section>
+<section id="truncation-and-censoring" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="truncation-and-censoring"><span class="header-section-number">3.3</span> Truncation and Censoring</h2>
+<p>One of the main features that makes survival analysis different from ordinary data analysis is that the event time is often not fully observed. In many studies, we do not observe the exact lifetime for every subject. Instead, we may only know that the event occurred after a certain time, before a certain time, or within a certain time interval. In other situations, some subjects are not included in the sample unless their event times satisfy certain conditions. These phenomena are called <em>censoring</em> and <em>truncation</em>.</p>
+<p>Although censoring and truncation are related, they are not the same. The key distinction is:</p>
+<ul>
+<li><p><strong>Censoring</strong> means that a subject is included in the dataset, but the exact event time is only partially observed.</p></li>
+<li><p><strong>Truncation</strong> means that some subjects are not included in the dataset at all, because their event times fall outside an observable range.</p></li>
+</ul>
+<p>In this section, we introduce the most common types of censoring and truncation.</p>
+<section id="censoring" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="censoring"><span class="header-section-number">3.3.1</span> Censoring</h3>
+<p>Censoring occurs when the exact event time <span class="math inline">\(T\)</span> is not fully known, but some partial information about <span class="math inline">\(T\)</span> is available. Importantly, the subject is still part of the study dataset.</p>
+<section id="right-censoring" class="level4" data-number="3.3.1.1">
+<h4 data-number="3.3.1.1" class="anchored" data-anchor-id="right-censoring"><span class="header-section-number">3.3.1.1</span> Right Censoring</h4>
+<p><em>Right censoring</em> is the most common type of censoring in survival analysis. It occurs when we know that the event time is greater than some observed time, but we do not know its exact value.</p>
+<p>Suppose a subject is followed up to time <span class="math inline">\(C\)</span>. If the event has not occurred by time <span class="math inline">\(C\)</span>, then we only know that <span class="math display">\[T &gt; C.\]</span> In this case, the observed data are <span class="math display">\[Y = \min(T,C), \qquad
+\Delta = I(T \le C),\]</span> where <span class="math display">\[\Delta =
+\begin{cases}
+1, &amp; \text{if the event is observed},\\
+0, &amp; \text{if the observation is right-censored}.
+\end{cases}\]</span></p>
+<p>Thus:</p>
+<ul>
+<li><p>if <span class="math inline">\(\Delta=1\)</span>, then <span class="math inline">\(Y=T\)</span> and the exact event time is observed;</p></li>
+<li><p>if <span class="math inline">\(\Delta=0\)</span>, then <span class="math inline">\(Y=C\)</span> and we only know that <span class="math inline">\(T&gt;C\)</span>.</p></li>
+</ul>
+<section id="example." class="level5" data-number="3.3.1.1.1">
+<h5 data-number="3.3.1.1.1" class="anchored" data-anchor-id="example."><span class="header-section-number">3.3.1.1.1</span> Example.</h5>
+<p>In a cancer study, patients are followed for five years after diagnosis. If a patient is still alive when the study ends, then the death time is not observed exactly. We only know that the patient survived longer than five years. This is right censoring.</p>
+</section>
+<section id="another-example." class="level5" data-number="3.3.1.1.2">
+<h5 data-number="3.3.1.1.2" class="anchored" data-anchor-id="another-example."><span class="header-section-number">3.3.1.1.2</span> Another example.</h5>
+<p>A machine is tested for 1000 hours. If it is still working at the end of the test, then its failure time is right-censored at 1000 hours.</p>
+</section>
+</section>
+<section id="left-censoring" class="level4" data-number="3.3.1.2">
+<h4 data-number="3.3.1.2" class="anchored" data-anchor-id="left-censoring"><span class="header-section-number">3.3.1.2</span> Left Censoring</h4>
+<p><em>Left censoring</em> occurs when we know that the event happened before some observed time, but we do not know exactly when.</p>
+<p>That is, instead of observing <span class="math inline">\(T\)</span>, we only know that <span class="math display">\[T \le C\]</span> for some time <span class="math inline">\(C\)</span>.</p>
+<section id="example.-1" class="level5" data-number="3.3.1.2.1">
+<h5 data-number="3.3.1.2.1" class="anchored" data-anchor-id="example.-1"><span class="header-section-number">3.3.1.2.1</span> Example.</h5>
+<p>Suppose patients are tested every year for a certain infection. A patient is negative at the first visit and already positive at the next visit. If the disease process began before the second visit but the exact time is unknown, then the onset time may be left-censored relative to that observation time.</p>
+</section>
+<section id="another-example.-1" class="level5" data-number="3.3.1.2.2">
+<h5 data-number="3.3.1.2.2" class="anchored" data-anchor-id="another-example.-1"><span class="header-section-number">3.3.1.2.2</span> Another example.</h5>
+<p>In an industrial setting, one may inspect a component for damage only at a certain time. If the damage is already present at the first inspection, the exact failure time is unknown, but it is known to have occurred before that inspection time.</p>
+<p>Left censoring is less common than right censoring in introductory survival analysis, but it appears naturally in some biomedical and reliability studies.</p>
+</section>
+</section>
+<section id="interval-censoring" class="level4" data-number="3.3.1.3">
+<h4 data-number="3.3.1.3" class="anchored" data-anchor-id="interval-censoring"><span class="header-section-number">3.3.1.3</span> Interval Censoring</h4>
+<p><em>Interval censoring</em> occurs when the exact event time is not known, but it is known to lie within an interval.</p>
+<p>That is, for some times <span class="math inline">\(L\)</span> and <span class="math inline">\(R\)</span>, we know that <span class="math display">\[L &lt; T \le R,\]</span> but we do not know the exact value of <span class="math inline">\(T\)</span>.</p>
+<section id="example.-2" class="level5" data-number="3.3.1.3.1">
+<h5 data-number="3.3.1.3.1" class="anchored" data-anchor-id="example.-2"><span class="header-section-number">3.3.1.3.1</span> Example.</h5>
+<p>Suppose patients are tested for disease recurrence every three months. If a patient is disease-free at month 6 but recurrence is detected at month 9, then the recurrence time is not known exactly. We only know that it occurred in the interval <span class="math display">\[6 &lt; T \le 9.\]</span> This is interval censoring.</p>
+</section>
+<section id="another-example.-2" class="level5" data-number="3.3.1.3.2">
+<h5 data-number="3.3.1.3.2" class="anchored" data-anchor-id="another-example.-2"><span class="header-section-number">3.3.1.3.2</span> Another example.</h5>
+<p>If a household survey is conducted once per year, and a person reports being employed in one year and unemployed in the next, then the time of job loss may only be known to lie between the two interview dates.</p>
+<p>Interval censoring is common when subjects are only assessed at discrete visit times rather than continuously monitored.</p>
+</section>
+</section>
+</section>
+<section id="a-comparison-of-the-main-types-of-censoring" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="a-comparison-of-the-main-types-of-censoring"><span class="header-section-number">3.3.2</span> A Comparison of the Main Types of Censoring</h3>
+<p>The three common censoring types can be summarized as follows:</p>
+<ul>
+<li><p><strong>Right censoring:</strong> we know that <span class="math inline">\(T &gt; C\)</span>.</p></li>
+<li><p><strong>Left censoring:</strong> we know that <span class="math inline">\(T \le C\)</span>.</p></li>
+<li><p><strong>Interval censoring:</strong> we know that <span class="math inline">\(L &lt; T \le R\)</span>.</p></li>
+</ul>
+<p>In all three cases, the subject is still observed and included in the dataset. What is missing is the exact event time.</p>
+</section>
+<section id="why-censoring-matters" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="why-censoring-matters"><span class="header-section-number">3.3.3</span> Why Censoring Matters</h3>
+<p>Censoring means that we cannot treat the observed follow-up times as if they were ordinary complete outcomes. For example, if we simply ignored all censored observations, we would usually bias the analysis toward subjects with shorter event times.</p>
+<p>To see this intuitively, consider a study in which many subjects are still event-free when follow-up ends. If we discard these subjects, then the remaining sample contains disproportionately many early events, making survival appear worse than it really is.</p>
+<p>Survival analysis methods are designed to use the available partial information correctly. For example, a right-censored observation still tells us that the subject survived at least up to the censoring time, and this information is valuable.</p>
+</section>
+<section id="truncation" class="level3" data-number="3.3.4">
+<h3 data-number="3.3.4" class="anchored" data-anchor-id="truncation"><span class="header-section-number">3.3.4</span> Truncation</h3>
+<p>Truncation is different from censoring. Under truncation, some subjects never appear in the observed dataset at all. In other words, the sample is restricted to subjects whose event times satisfy certain conditions.</p>
+<section id="left-truncation" class="level4" data-number="3.3.4.1">
+<h4 data-number="3.3.4.1" class="anchored" data-anchor-id="left-truncation"><span class="header-section-number">3.3.4.1</span> Left Truncation</h4>
+<p><em>Left truncation</em> occurs when subjects are only observed if their event times exceed a certain threshold.</p>
+<p>Suppose a subject enters observation at time <span class="math inline">\(L\)</span>. Then the subject is included in the study only if <span class="math display">\[T &gt; L.\]</span> Subjects with <span class="math inline">\(T \le L\)</span> are never observed.</p>
+<section id="example.-3" class="level5" data-number="3.3.4.1.1">
+<h5 data-number="3.3.4.1.1" class="anchored" data-anchor-id="example.-3"><span class="header-section-number">3.3.4.1.1</span> Example.</h5>
+<p>Suppose we study survival after disease onset, but patients are only recruited into the study when they first visit a clinic. A patient who dies before reaching the clinic is never included in the dataset. Thus, only subjects who survive long enough to enter the study are observed. This is left truncation.</p>
+</section>
+<section id="another-example.-3" class="level5" data-number="3.3.4.1.2">
+<h5 data-number="3.3.4.1.2" class="anchored" data-anchor-id="another-example.-3"><span class="header-section-number">3.3.4.1.2</span> Another example.</h5>
+<p>In a study of ages at death, if the data source only includes people who lived to at least age 65, then anyone who died before age 65 is absent from the dataset. The data are left-truncated at age 65.</p>
+<p>Left truncation is also called <em>delayed entry</em> in many applications.</p>
+</section>
+</section>
+<section id="right-truncation" class="level4" data-number="3.3.4.2">
+<h4 data-number="3.3.4.2" class="anchored" data-anchor-id="right-truncation"><span class="header-section-number">3.3.4.2</span> Right Truncation</h4>
+<p><em>Right truncation</em> occurs when subjects are only observed if their event times are less than or equal to some threshold.</p>
+<p>That is, a subject is included only if <span class="math display">\[T \le U.\]</span> Subjects with <span class="math inline">\(T &gt; U\)</span> are not observed.</p>
+<section id="example.-4" class="level5" data-number="3.3.4.2.1">
+<h5 data-number="3.3.4.2.1" class="anchored" data-anchor-id="example.-4"><span class="header-section-number">3.3.4.2.1</span> Example.</h5>
+<p>Suppose a registry includes only individuals who have already experienced a particular event before the registry closes. Those whose event occurs later are not included. Then the data may be right-truncated.</p>
+<p>Right truncation is less common in basic applications than left truncation, but it arises in retrospective studies and ascertainment based on occurrence of the event.</p>
+</section>
+</section>
+</section>
+<section id="censoring-versus-truncation" class="level3" data-number="3.3.5">
+<h3 data-number="3.3.5" class="anchored" data-anchor-id="censoring-versus-truncation"><span class="header-section-number">3.3.5</span> Censoring Versus Truncation</h3>
+<p>It is important to clearly distinguish censoring from truncation.</p>
+<section id="censoring." class="level5" data-number="3.3.5.0.1">
+<h5 data-number="3.3.5.0.1" class="anchored" data-anchor-id="censoring."><span class="header-section-number">3.3.5.0.1</span> Censoring.</h5>
+<p>A censored subject is included in the dataset, but the event time is not known exactly.</p>
+</section>
+<section id="truncation." class="level5" data-number="3.3.5.0.2">
+<h5 data-number="3.3.5.0.2" class="anchored" data-anchor-id="truncation."><span class="header-section-number">3.3.5.0.2</span> Truncation.</h5>
+<p>A truncated subject is not included in the dataset at all.</p>
+<p>This distinction has major statistical consequences. Under censoring, we analyze incomplete observations from observed subjects. Under truncation, the observed sample itself is selective, because some subjects are systematically missing from the study population.</p>
+</section>
+<section id="illustration." class="level5" data-number="3.3.5.0.3">
+<h5 data-number="3.3.5.0.3" class="anchored" data-anchor-id="illustration."><span class="header-section-number">3.3.5.0.3</span> Illustration.</h5>
+<p>Suppose we are studying time to death after disease onset.</p>
+<ul>
+<li><p>If a patient is enrolled in the study and is still alive when follow-up ends, then the patient’s survival time is <em>right-censored</em>.</p></li>
+<li><p>If a patient dies before having a chance to enter the study, then the patient is not observed at all; this is <em>left truncation</em>.</p></li>
+</ul>
+<p>So censoring concerns incomplete information on observed subjects, while truncation concerns exclusion of subjects from the observed sample.</p>
+</section>
+</section>
+<section id="simple-schematic-summary" class="level3" data-number="3.3.6">
+<h3 data-number="3.3.6" class="anchored" data-anchor-id="simple-schematic-summary"><span class="header-section-number">3.3.6</span> Simple Schematic Summary</h3>
+<p>It is often helpful to visualize the different possibilities.</p>
+<section id="exact-observation." class="level5" data-number="3.3.6.0.1">
+<h5 data-number="3.3.6.0.1" class="anchored" data-anchor-id="exact-observation."><span class="header-section-number">3.3.6.0.1</span> Exact observation.</h5>
+<p><span class="math display">\[T = 8\]</span> means the event occurred exactly at time 8.</p>
+</section>
+<section id="right-censoring." class="level5" data-number="3.3.6.0.2">
+<h5 data-number="3.3.6.0.2" class="anchored" data-anchor-id="right-censoring."><span class="header-section-number">3.3.6.0.2</span> Right censoring.</h5>
+<p><span class="math display">\[T &gt; 8\]</span> means the subject was event-free up to time 8, but the later event time is unknown.</p>
+</section>
+<section id="left-censoring." class="level5" data-number="3.3.6.0.3">
+<h5 data-number="3.3.6.0.3" class="anchored" data-anchor-id="left-censoring."><span class="header-section-number">3.3.6.0.3</span> Left censoring.</h5>
+<p><span class="math display">\[T \le 8\]</span> means the event occurred before or at time 8, but the exact time is unknown.</p>
+</section>
+<section id="interval-censoring." class="level5" data-number="3.3.6.0.4">
+<h5 data-number="3.3.6.0.4" class="anchored" data-anchor-id="interval-censoring."><span class="header-section-number">3.3.6.0.4</span> Interval censoring.</h5>
+<p><span class="math display">\[5 &lt; T \le 8\]</span> means the event occurred sometime between times 5 and 8.</p>
+</section>
+<section id="left-truncation." class="level5" data-number="3.3.6.0.5">
+<h5 data-number="3.3.6.0.5" class="anchored" data-anchor-id="left-truncation."><span class="header-section-number">3.3.6.0.5</span> Left truncation.</h5>
+<p>Only subjects with <span class="math display">\[T &gt; 5\]</span> can enter the observed sample. Subjects with <span class="math inline">\(T \le 5\)</span> are not observed.</p>
+</section>
+<section id="right-truncation." class="level5" data-number="3.3.6.0.6">
+<h5 data-number="3.3.6.0.6" class="anchored" data-anchor-id="right-truncation."><span class="header-section-number">3.3.6.0.6</span> Right truncation.</h5>
+<p>Only subjects with <span class="math display">\[T \le 8\]</span> can enter the observed sample. Subjects with <span class="math inline">\(T &gt; 8\)</span> are not observed.</p>
+</section>
+</section>
+<section id="summary-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="summary-1">Summary</h3>
+<p>Censoring and truncation are fundamental features of survival data. Censoring means that a subject is observed, but the exact event time is only partially known. The most common type is right censoring, where we only know that the event time exceeds the observed follow-up time. Other forms include left censoring and interval censoring.</p>
+<p>Truncation means that some subjects are not observed at all because their event times fall outside an observable range. Left truncation arises when only subjects who survive long enough to enter the study are observed, while right truncation arises when only subjects whose events occur before a certain time are included.</p>
+<p>Understanding these ideas is essential, because many of the core methods in survival analysis are designed specifically to handle censoring and truncation properly.</p>
+</section>
+</section>
+<section id="common-distributions-for-modeling-lifetime-data" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="common-distributions-for-modeling-lifetime-data"><span class="header-section-number">3.4</span> Common Distributions for Modeling Lifetime Data</h2>
+<p>In survival analysis, probability models are often used to describe the distribution of a lifetime or event time <span class="math inline">\(T\)</span>. Different distributions lead to different shapes for the density, survival function, and hazard function, and hence may be appropriate for different kinds of data.</p>
+<p>In this section, we introduce three commonly used distributions for lifetime data:</p>
+<ul>
+<li><p>the exponential distribution,</p></li>
+<li><p>the Weibull distribution,</p></li>
+<li><p>the log-normal distribution.</p></li>
+</ul>
+<p>For each distribution, we present its density function, distribution function, survival function, hazard function, and some basic summary measures such as the mean and variance.</p>
+<p>Throughout, we assume that <span class="math inline">\(T&gt;0\)</span>.</p>
+<section id="the-exponential-distribution" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="the-exponential-distribution"><span class="header-section-number">3.4.1</span> The Exponential Distribution</h3>
+<p>The exponential distribution is one of the simplest and most important models in survival analysis. Its main feature is that it has a <em>constant hazard rate</em> over time.</p>
+<p>We say that <span class="math display">\[T \sim \text{Exponential}(\lambda),\]</span> where <span class="math inline">\(\lambda&gt;0\)</span> is the rate parameter, if the density function of <span class="math inline">\(T\)</span> is <span class="math display">\[f(t)=\lambda e^{-\lambda t}, \qquad t\ge 0.\]</span></p>
+<section id="basic-functions" class="level4" data-number="3.4.1.1">
+<h4 data-number="3.4.1.1" class="anchored" data-anchor-id="basic-functions"><span class="header-section-number">3.4.1.1</span> Basic Functions</h4>
+<p>The distribution function is <span class="math display">\[F(t)=P(T\le t)=1-e^{-\lambda t}, \qquad t\ge 0.\]</span></p>
+<p>The survival function is <span class="math display">\[S(t)=P(T&gt;t)=e^{-\lambda t}, \qquad t\ge 0.\]</span></p>
+<p>The hazard function is <span class="math display">\[h(t)=\frac{f(t)}{S(t)}
+=
+\frac{\lambda e^{-\lambda t}}{e^{-\lambda t}}
+=
+\lambda.\]</span></p>
+<p>Thus, the exponential distribution has constant hazard: <span class="math display">\[h(t)=\lambda.\]</span></p>
+<p>The cumulative hazard function is <span class="math display">\[H(t)=\int_0^t h(u)\,du=\lambda t.\]</span></p>
+</section>
+<section id="mean-and-variance" class="level4" data-number="3.4.1.2">
+<h4 data-number="3.4.1.2" class="anchored" data-anchor-id="mean-and-variance"><span class="header-section-number">3.4.1.2</span> Mean and Variance</h4>
+<p>The mean and variance of an exponential random variable are <span class="math display">\[E(T)=\frac{1}{\lambda},
+\qquad
+\operatorname{Var}(T)=\frac{1}{\lambda^2}.\]</span></p>
+</section>
+<section id="interpretation-1" class="level4" data-number="3.4.1.3">
+<h4 data-number="3.4.1.3" class="anchored" data-anchor-id="interpretation-1"><span class="header-section-number">3.4.1.3</span> Interpretation</h4>
+<p>The exponential distribution is appropriate when the event risk does not change over time. For example, if a machine has the same instantaneous failure rate regardless of how long it has been operating, then an exponential model may be reasonable.</p>
+<p>In practice, however, many real datasets have hazard rates that increase or decrease over time, so the exponential model is often too restrictive.</p>
+</section>
+</section>
+<section id="the-weibull-distribution" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="the-weibull-distribution"><span class="header-section-number">3.4.2</span> The Weibull Distribution</h3>
+<p>The Weibull distribution is a widely used generalization of the exponential distribution. It is very flexible because its hazard function can be increasing, decreasing, or constant, depending on the parameter values.</p>
+<p>We say that <span class="math display">\[T \sim \text{Weibull}(\lambda,k),\]</span> where <span class="math inline">\(\lambda&gt;0\)</span> is a scale parameter and <span class="math inline">\(k&gt;0\)</span> is a shape parameter, if the density function is <span class="math display">\[f(t)=\frac{k}{\lambda}\left(\frac{t}{\lambda}\right)^{k-1}
+\exp\left\{-\left(\frac{t}{\lambda}\right)^k\right\},
+\qquad t\ge 0.\]</span></p>
+<section id="basic-functions-1" class="level4" data-number="3.4.2.1">
+<h4 data-number="3.4.2.1" class="anchored" data-anchor-id="basic-functions-1"><span class="header-section-number">3.4.2.1</span> Basic Functions</h4>
+<p>The distribution function is <span class="math display">\[F(t)=1-\exp\left\{-\left(\frac{t}{\lambda}\right)^k\right\},
+\qquad t\ge 0.\]</span></p>
+<p>The survival function is <span class="math display">\[S(t)=\exp\left\{-\left(\frac{t}{\lambda}\right)^k\right\},
+\qquad t\ge 0.\]</span></p>
+<p>The hazard function is <span class="math display">\[h(t)=\frac{f(t)}{S(t)}
+=
+\frac{k}{\lambda}\left(\frac{t}{\lambda}\right)^{k-1},
+\qquad t\ge 0.\]</span></p>
+<p>The cumulative hazard function is <span class="math display">\[H(t)=\left(\frac{t}{\lambda}\right)^k.\]</span></p>
+</section>
+<section id="mean-and-variance-1" class="level4" data-number="3.4.2.2">
+<h4 data-number="3.4.2.2" class="anchored" data-anchor-id="mean-and-variance-1"><span class="header-section-number">3.4.2.2</span> Mean and Variance</h4>
+<p>The mean of a Weibull random variable is <span class="math display">\[E(T)=\lambda \Gamma\left(1+\frac{1}{k}\right),\]</span> where <span class="math inline">\(\Gamma(\cdot)\)</span> is the gamma function, defined by <span class="math display">\[\Gamma(a)=\int_0^\infty x^{a-1}e^{-x}\,dx, \qquad a&gt;0.\]</span></p>
+<p>The variance is <span class="math display">\[\operatorname{Var}(T)
+=
+\lambda^2
+\left[
+\Gamma\left(1+\frac{2}{k}\right)
+-
+\left\{
+\Gamma\left(1+\frac{1}{k}\right)
+\right\}^2
+\right].\]</span></p>
+</section>
+<section id="interpretation-of-the-shape-parameter" class="level4" data-number="3.4.2.3">
+<h4 data-number="3.4.2.3" class="anchored" data-anchor-id="interpretation-of-the-shape-parameter"><span class="header-section-number">3.4.2.3</span> Interpretation of the Shape Parameter</h4>
+<p>The parameter <span class="math inline">\(k\)</span> determines the shape of the hazard function:</p>
+<ul>
+<li><p>if <span class="math inline">\(k=1\)</span>, then the Weibull distribution reduces to the exponential distribution, and the hazard is constant;</p></li>
+<li><p>if <span class="math inline">\(k&gt;1\)</span>, then the hazard increases over time;</p></li>
+<li><p>if <span class="math inline">\(0&lt;k&lt;1\)</span>, then the hazard decreases over time.</p></li>
+</ul>
+<p>This flexibility makes the Weibull distribution especially useful in reliability studies and biomedical applications.</p>
+</section>
+</section>
+<section id="the-log-normal-distribution" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="the-log-normal-distribution"><span class="header-section-number">3.4.3</span> The Log-Normal Distribution</h3>
+<p>The log-normal distribution is another important model for lifetime data. It is based on the idea that the logarithm of the event time is normally distributed.</p>
+<p>We say that <span class="math display">\[T \sim \text{Lognormal}(\mu,\sigma^2),\]</span> where <span class="math inline">\(\mu\in \mathbb{R}\)</span> and <span class="math inline">\(\sigma&gt;0\)</span>, if <span class="math display">\[\log T \sim N(\mu,\sigma^2).\]</span></p>
+<p>This implies that <span class="math inline">\(T\)</span> itself is always positive, which makes the log-normal distribution suitable for modeling lifetime data.</p>
+<section id="density-function-1" class="level4" data-number="3.4.3.1">
+<h4 data-number="3.4.3.1" class="anchored" data-anchor-id="density-function-1"><span class="header-section-number">3.4.3.1</span> Density Function</h4>
+<p>The density function of a log-normal random variable is <span class="math display">\[f(t)=
+\frac{1}{t\sigma\sqrt{2\pi}}
+\exp\left\{
+-\frac{(\log t-\mu)^2}{2\sigma^2}
+\right\},
+\qquad t&gt;0.\]</span></p>
+</section>
+<section id="distribution-function-1" class="level4" data-number="3.4.3.2">
+<h4 data-number="3.4.3.2" class="anchored" data-anchor-id="distribution-function-1"><span class="header-section-number">3.4.3.2</span> Distribution Function</h4>
+<p>Its distribution function is <span class="math display">\[F(t)=P(T\le t)
+=
+\Phi\left(\frac{\log t-\mu}{\sigma}\right),
+\qquad t&gt;0,\]</span> where <span class="math inline">\(\Phi(\cdot)\)</span> is the cumulative distribution function of the standard normal distribution.</p>
+</section>
+<section id="survival-function-1" class="level4" data-number="3.4.3.3">
+<h4 data-number="3.4.3.3" class="anchored" data-anchor-id="survival-function-1"><span class="header-section-number">3.4.3.3</span> Survival Function</h4>
+<p>The survival function is <span class="math display">\[S(t)=P(T&gt;t)
+=
+1-\Phi\left(\frac{\log t-\mu}{\sigma}\right),
+\qquad t&gt;0.\]</span></p>
+</section>
+<section id="hazard-function-1" class="level4" data-number="3.4.3.4">
+<h4 data-number="3.4.3.4" class="anchored" data-anchor-id="hazard-function-1"><span class="header-section-number">3.4.3.4</span> Hazard Function</h4>
+<p>The hazard function is <span class="math display">\[h(t)=\frac{f(t)}{S(t)}
+=
+\frac{
+\frac{1}{t\sigma\sqrt{2\pi}}
+\exp\left\{
+-\frac{(\log t-\mu)^2}{2\sigma^2}
+\right\}
+}{
+1-\Phi\left(\frac{\log t-\mu}{\sigma}\right)
+},
+\qquad t&gt;0.\]</span></p>
+<p>Unlike the exponential and Weibull distributions, the hazard function of the log-normal distribution does not usually have a simple monotone form. It often increases at first and then decreases later.</p>
+</section>
+<section id="mean-and-variance-2" class="level4" data-number="3.4.3.5">
+<h4 data-number="3.4.3.5" class="anchored" data-anchor-id="mean-and-variance-2"><span class="header-section-number">3.4.3.5</span> Mean and Variance</h4>
+<p>The mean of a log-normal random variable is <span class="math display">\[E(T)=\exp\left(\mu+\frac{\sigma^2}{2}\right).\]</span></p>
+<p>The variance is <span class="math display">\[\operatorname{Var}(T)
+=
+\left(e^{\sigma^2}-1\right)e^{2\mu+\sigma^2}.\]</span></p>
+</section>
+<section id="interpretation-2" class="level4" data-number="3.4.3.6">
+<h4 data-number="3.4.3.6" class="anchored" data-anchor-id="interpretation-2"><span class="header-section-number">3.4.3.6</span> Interpretation</h4>
+<p>The log-normal distribution is often useful when the logarithm of lifetime is more symmetric or approximately normal. It can model right-skewed lifetime data and is commonly used when the hazard does not have a simple monotone pattern.</p>
+</section>
+</section>
+<section id="comparison-of-the-three-distributions" class="level3" data-number="3.4.4">
+<h3 data-number="3.4.4" class="anchored" data-anchor-id="comparison-of-the-three-distributions"><span class="header-section-number">3.4.4</span> Comparison of the Three Distributions</h3>
+<p>These three distributions differ mainly in the shapes they allow for the hazard function.</p>
+<ul>
+<li><p><strong>Exponential:</strong> constant hazard.</p></li>
+<li><p><strong>Weibull:</strong> increasing, decreasing, or constant hazard depending on the shape parameter.</p></li>
+<li><p><strong>Log-normal:</strong> hazard may rise and then fall, so it is more flexible in some situations.</p></li>
+</ul>
+<p>The exponential model is mathematically simple, but often too restrictive. The Weibull model is more flexible and still relatively easy to work with. The log-normal model can capture more complicated patterns, especially when the data are strongly skewed.</p>
+</section>
+</section>
+<section id="review-of-maximum-likelihood-estimation" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="review-of-maximum-likelihood-estimation"><span class="header-section-number">3.5</span> Review of Maximum Likelihood Estimation</h2>
+<p>In this section, we briefly review the basic idea of maximum likelihood estimation (MLE), and then apply it to two common lifetime distributions: the exponential distribution and the Weibull distribution.</p>
+<section id="general-idea-of-maximum-likelihood-estimation" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="general-idea-of-maximum-likelihood-estimation"><span class="header-section-number">3.5.1</span> General Idea of Maximum Likelihood Estimation</h3>
+<p>Suppose that <span class="math inline">\(X_1,\dots,X_n\)</span> are independent and identically distributed observations from a distribution with density or probability mass function <span class="math display">\[f(x;\theta),\]</span> where <span class="math inline">\(\theta\)</span> is an unknown parameter.</p>
+<p>The <em>likelihood function</em> is defined as the joint density (or joint probability mass function), viewed as a function of the parameter <span class="math inline">\(\theta\)</span>: <span class="math display">\[L(\theta)=\prod_{i=1}^n f(X_i;\theta).\]</span> The idea of maximum likelihood estimation is to choose the value of <span class="math inline">\(\theta\)</span> that makes the observed data most likely.</p>
+<p>The <em>maximum likelihood estimator</em> (MLE), denoted by <span class="math inline">\(\hat\theta\)</span>, is the value of <span class="math inline">\(\theta\)</span> that maximizes <span class="math inline">\(L(\theta)\)</span>: <span class="math display">\[\hat\theta=\arg\max_\theta L(\theta).\]</span></p>
+<p>Because products can be cumbersome to work with, we usually maximize the <em>log-likelihood</em>: <span class="math display">\[\ell(\theta)=\log L(\theta)=\sum_{i=1}^n \log f(X_i;\theta).\]</span> Since the logarithm is a strictly increasing function, maximizing <span class="math inline">\(\ell(\theta)\)</span> is equivalent to maximizing <span class="math inline">\(L(\theta)\)</span>.</p>
+<p>In many problems, we find the MLE by:</p>
+<ol type="1">
+<li><p>writing down the likelihood function;</p></li>
+<li><p>taking the logarithm to obtain the log-likelihood;</p></li>
+<li><p>differentiating with respect to the parameter(s);</p></li>
+<li><p>solving the likelihood equations.</p></li>
+</ol>
+</section>
+<section id="a-simple-example-exponential-distribution" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="a-simple-example-exponential-distribution"><span class="header-section-number">3.5.2</span> A Simple Example: Exponential Distribution</h3>
+<p>Suppose <span class="math display">\[T_1,\dots,T_n \overset{\text{i.i.d.}}{\sim} \text{Exponential}(\lambda),\]</span> where <span class="math inline">\(\lambda&gt;0\)</span> is the unknown rate parameter. The density is <span class="math display">\[f(t;\lambda)=\lambda e^{-\lambda t}, \qquad t\ge 0.\]</span></p>
+<section id="likelihood-function" class="level4" data-number="3.5.2.1">
+<h4 data-number="3.5.2.1" class="anchored" data-anchor-id="likelihood-function"><span class="header-section-number">3.5.2.1</span> Likelihood Function</h4>
+<p>The likelihood function is <span class="math display">\[L(\lambda)=\prod_{i=1}^n \lambda e^{-\lambda T_i}
+=\lambda^n \exp\left(-\lambda\sum_{i=1}^n T_i\right).\]</span></p>
+</section>
+<section id="log-likelihood-function" class="level4" data-number="3.5.2.2">
+<h4 data-number="3.5.2.2" class="anchored" data-anchor-id="log-likelihood-function"><span class="header-section-number">3.5.2.2</span> Log-Likelihood Function</h4>
+<p>Taking logs gives <span class="math display">\[\ell(\lambda)=\log L(\lambda)
+= n\log\lambda - \lambda\sum_{i=1}^n T_i.\]</span></p>
+</section>
+<section id="finding-the-mle" class="level4" data-number="3.5.2.3">
+<h4 data-number="3.5.2.3" class="anchored" data-anchor-id="finding-the-mle"><span class="header-section-number">3.5.2.3</span> Finding the MLE</h4>
+<p>Differentiate with respect to <span class="math inline">\(\lambda\)</span>: <span class="math display">\[\frac{d}{d\lambda}\ell(\lambda)
+=\frac{n}{\lambda}-\sum_{i=1}^n T_i.\]</span> Setting this equal to zero gives <span class="math display">\[\frac{n}{\lambda}-\sum_{i=1}^n T_i=0.\]</span> Solving for <span class="math inline">\(\lambda\)</span>, we obtain <span class="math display">\[\hat\lambda=\frac{n}{\sum_{i=1}^n T_i}=\frac{1}{\bar T},\]</span> where <span class="math display">\[\bar T=\frac{1}{n}\sum_{i=1}^n T_i\]</span> is the sample mean.</p>
+<p>So the MLE of the exponential rate parameter is <span class="math display">\[\boxed{\hat\lambda=\frac{1}{\bar T}}.\]</span></p>
+</section>
+<section id="checking-that-this-is-a-maximum" class="level4" data-number="3.5.2.4">
+<h4 data-number="3.5.2.4" class="anchored" data-anchor-id="checking-that-this-is-a-maximum"><span class="header-section-number">3.5.2.4</span> Checking That This Is a Maximum</h4>
+<p>The second derivative is <span class="math display">\[\frac{d^2}{d\lambda^2}\ell(\lambda)=-\frac{n}{\lambda^2}&lt;0,\]</span> so the log-likelihood is concave in <span class="math inline">\(\lambda\)</span>, and the critical point is indeed a maximum.</p>
+</section>
+<section id="interpretation-3" class="level4" data-number="3.5.2.5">
+<h4 data-number="3.5.2.5" class="anchored" data-anchor-id="interpretation-3"><span class="header-section-number">3.5.2.5</span> Interpretation</h4>
+<p>Recall that for an exponential random variable, <span class="math display">\[E(T)=\frac{1}{\lambda}.\]</span> Thus the MLE can also be written as <span class="math display">\[\hat\lambda=\frac{1}{\bar T},\]</span> which is natural because it replaces the population mean <span class="math inline">\(E(T)\)</span> by the sample mean <span class="math inline">\(\bar T\)</span>.</p>
+</section>
+</section>
+<section id="weibull-distribution" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="weibull-distribution"><span class="header-section-number">3.5.3</span> Weibull Distribution</h3>
+<p>Now suppose <span class="math display">\[T_1,\dots,T_n \overset{\text{i.i.d.}}{\sim} \text{Weibull}(\lambda,k),\]</span> where <span class="math inline">\(\lambda&gt;0\)</span> is a scale parameter and <span class="math inline">\(k&gt;0\)</span> is a shape parameter. The density is <span class="math display">\[f(t;\lambda,k)=\frac{k}{\lambda}\left(\frac{t}{\lambda}\right)^{k-1}
+\exp\left\{-\left(\frac{t}{\lambda}\right)^k\right\},
+\qquad t\ge 0.\]</span></p>
+<p>We now derive the likelihood and the estimating equations for <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(k\)</span>.</p>
+<section id="likelihood-function-1" class="level4" data-number="3.5.3.1">
+<h4 data-number="3.5.3.1" class="anchored" data-anchor-id="likelihood-function-1"><span class="header-section-number">3.5.3.1</span> Likelihood Function</h4>
+<p>The likelihood function is <span class="math display">\[L(\lambda,k)
+=\prod_{i=1}^n
+\frac{k}{\lambda}\left(\frac{T_i}{\lambda}\right)^{k-1}
+\exp\left\{-\left(\frac{T_i}{\lambda}\right)^k\right\}.\]</span></p>
+<p>This can be rewritten as <span class="math display">\[L(\lambda,k)
+=
+\left(\frac{k}{\lambda}\right)^n
+\prod_{i=1}^n \left(\frac{T_i}{\lambda}\right)^{k-1}
+\exp\left\{-\sum_{i=1}^n \left(\frac{T_i}{\lambda}\right)^k\right\}.\]</span></p>
+</section>
+<section id="log-likelihood-function-1" class="level4" data-number="3.5.3.2">
+<h4 data-number="3.5.3.2" class="anchored" data-anchor-id="log-likelihood-function-1"><span class="header-section-number">3.5.3.2</span> Log-Likelihood Function</h4>
+<p>Taking logs, <span class="math display">\[\ell(\lambda,k)
+=
+n\log k - n\log \lambda
++ (k-1)\sum_{i=1}^n \log\left(\frac{T_i}{\lambda}\right)
+-\sum_{i=1}^n \left(\frac{T_i}{\lambda}\right)^k.\]</span></p>
+<p>Expanding the middle term, <span class="math display">\[\sum_{i=1}^n \log\left(\frac{T_i}{\lambda}\right)
+=
+\sum_{i=1}^n \log T_i - n\log\lambda,\]</span> so <span class="math display">\[\ell(\lambda,k)
+=
+n\log k
+-nk\log\lambda
++(k-1)\sum_{i=1}^n \log T_i
+-\sum_{i=1}^n \left(\frac{T_i}{\lambda}\right)^k.\]</span></p>
+</section>
+<section id="derivative-with-respect-to-lambda" class="level4" data-number="3.5.3.3">
+<h4 data-number="3.5.3.3" class="anchored" data-anchor-id="derivative-with-respect-to-lambda"><span class="header-section-number">3.5.3.3</span> Derivative with Respect to <span class="math inline">\(\lambda\)</span></h4>
+<p>Differentiate <span class="math inline">\(\ell(\lambda,k)\)</span> with respect to <span class="math inline">\(\lambda\)</span>: <span class="math display">\[\frac{\partial}{\partial\lambda}\ell(\lambda,k)
+=
+-\frac{nk}{\lambda}
++
+\sum_{i=1}^n
+\frac{\partial}{\partial\lambda}
+\left[
+-\left(\frac{T_i}{\lambda}\right)^k
+\right].\]</span> Now <span class="math display">\[\left(\frac{T_i}{\lambda}\right)^k=T_i^k\lambda^{-k},\]</span> so <span class="math display">\[\frac{\partial}{\partial\lambda}
+\left[
+-\left(\frac{T_i}{\lambda}\right)^k
+\right]
+=
+kT_i^k\lambda^{-k-1}.\]</span> Therefore, <span class="math display">\[\frac{\partial}{\partial\lambda}\ell(\lambda,k)
+=
+-\frac{nk}{\lambda}
++
+k\lambda^{-k-1}\sum_{i=1}^n T_i^k.\]</span> Setting this equal to zero gives <span class="math display">\[-\frac{nk}{\lambda}
++
+k\lambda^{-k-1}\sum_{i=1}^n T_i^k=0.\]</span> Multiplying both sides by <span class="math inline">\(\lambda^{k+1}/k\)</span>, <span class="math display">\[-n\lambda^k+\sum_{i=1}^n T_i^k=0.\]</span> Hence <span class="math display">\[\lambda^k=\frac{1}{n}\sum_{i=1}^n T_i^k,\]</span> so for a fixed value of <span class="math inline">\(k\)</span>, <span class="math display">\[\boxed{
+\hat\lambda
+=
+\left(\frac{1}{n}\sum_{i=1}^n T_i^k\right)^{1/k}.
+}\]</span></p>
+</section>
+<section id="derivative-with-respect-to-k" class="level4" data-number="3.5.3.4">
+<h4 data-number="3.5.3.4" class="anchored" data-anchor-id="derivative-with-respect-to-k"><span class="header-section-number">3.5.3.4</span> Derivative with Respect to <span class="math inline">\(k\)</span></h4>
+<p>Differentiate <span class="math inline">\(\ell(\lambda,k)\)</span> with respect to <span class="math inline">\(k\)</span>: <span class="math display">\[\frac{\partial}{\partial k}\ell(\lambda,k)
+=
+\frac{n}{k}
+-n\log\lambda
++\sum_{i=1}^n \log T_i
+-\sum_{i=1}^n
+\left(\frac{T_i}{\lambda}\right)^k
+\log\left(\frac{T_i}{\lambda}\right).\]</span> Setting this equal to zero gives the likelihood equation for <span class="math inline">\(k\)</span>: <span class="math display">\[\frac{n}{k}
+-n\log\lambda
++\sum_{i=1}^n \log T_i
+-\sum_{i=1}^n
+\left(\frac{T_i}{\lambda}\right)^k
+\log\left(\frac{T_i}{\lambda}\right)
+=0.\]</span></p>
+<p>Unlike the exponential case, this equation usually cannot be solved in closed form. In practice, one typically uses a numerical method such as Newton-Raphson to solve for <span class="math inline">\(\hat k\)</span>, and then substitutes <span class="math inline">\(\hat k\)</span> into <span class="math display">\[\hat\lambda
+=
+\left(\frac{1}{n}\sum_{i=1}^n T_i^{\hat k}\right)^{1/\hat k}.\]</span></p>
+</section>
+<section id="summary-for-weibull-mle" class="level4" data-number="3.5.3.5">
+<h4 data-number="3.5.3.5" class="anchored" data-anchor-id="summary-for-weibull-mle"><span class="header-section-number">3.5.3.5</span> Summary for Weibull MLE</h4>
+<p>For the Weibull distribution:</p>
+<ul>
+<li><p>the MLE does not generally have a closed-form solution for both parameters together;</p></li>
+<li><p>for a fixed <span class="math inline">\(k\)</span>, the MLE of <span class="math inline">\(\lambda\)</span> is explicit: <span class="math display">\[\hat\lambda=
+    \left(\frac{1}{n}\sum_{i=1}^n T_i^k\right)^{1/k};\]</span></p></li>
+<li><p>the MLE of <span class="math inline">\(k\)</span> must usually be obtained numerically.</p></li>
+</ul>
+</section>
+</section>
+<section id="special-case-exponential-distribution-as-a-weibull-model" class="level3" data-number="3.5.4">
+<h3 data-number="3.5.4" class="anchored" data-anchor-id="special-case-exponential-distribution-as-a-weibull-model"><span class="header-section-number">3.5.4</span> Special Case: Exponential Distribution as a Weibull Model</h3>
+<p>Recall that the exponential distribution is a special case of the Weibull distribution with shape parameter <span class="math display">\[k=1.\]</span> Indeed, when <span class="math inline">\(k=1\)</span>, the Weibull density becomes <span class="math display">\[f(t;\lambda,1)=\frac{1}{\lambda}\exp\left(-\frac{t}{\lambda}\right),\]</span> which is an exponential distribution with mean <span class="math inline">\(\lambda\)</span>.</p>
+<p>Under this parametrization, the MLE of <span class="math inline">\(\lambda\)</span> is <span class="math display">\[\hat\lambda=\bar T.\]</span> This agrees with the exponential result above if we use the rate parametrization <span class="math inline">\(\lambda_{\text{rate}}=1/\lambda\)</span>.</p>
+</section>
+<section id="a-note-on-censored-data" class="level3" data-number="3.5.5">
+<h3 data-number="3.5.5" class="anchored" data-anchor-id="a-note-on-censored-data"><span class="header-section-number">3.5.5</span> A Note on Censored Data</h3>
+<p>The likelihood calculations above assume that all event times are fully observed. In survival analysis, however, data are often censored. In that case, the likelihood must be modified.</p>
+<p>For right-censored data, if we observe <span class="math display">\[Y_i=\min(T_i,C_i), \qquad \Delta_i=I(T_i\le C_i),\]</span> then each subject contributes <span class="math display">\[f(Y_i;\theta)^{\Delta_i}S(Y_i;\theta)^{1-\Delta_i}\]</span> to the likelihood. Therefore, the full likelihood becomes <span class="math display">\[L(\theta)=\prod_{i=1}^n
+f(Y_i;\theta)^{\Delta_i}S(Y_i;\theta)^{1-\Delta_i}.\]</span> This is the basic likelihood form used throughout parametric survival analysis with right-censored data.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./preface.html" class="pagination-link" aria-label="Preface">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Preface</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./02-parametric-estimation.html" class="pagination-link" aria-label="Estimation in Parametric Models">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estimation in Parametric Models</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

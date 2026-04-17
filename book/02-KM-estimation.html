@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2&nbsp; Kaplan-Meier Estimator – An Introduction to Survival Analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./01-introduction.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-27c261d06b905028a18691de25d09dde.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-KM-estimation.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Kaplan-Meier Estimator</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">An Introduction to Survival Analysis</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">An Introduction to Survival Analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-KM-estimation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Kaplan-Meier Estimator</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#warm-up-the-empirical-distribution-function-without-censoring" id="toc-warm-up-the-empirical-distribution-function-without-censoring" class="nav-link active" data-scroll-target="#warm-up-the-empirical-distribution-function-without-censoring"><span class="header-section-number">2.1</span> Warm-Up: The Empirical Distribution Function Without Censoring</a></li>
+  <li><a href="#what-is-the-kaplan-meier-estimator" id="toc-what-is-the-kaplan-meier-estimator" class="nav-link" data-scroll-target="#what-is-the-kaplan-meier-estimator"><span class="header-section-number">2.2</span> What Is the Kaplan-Meier Estimator?</a>
+  <ul class="collapse">
+  <li><a href="#the-key-assumption-independent-censoring" id="toc-the-key-assumption-independent-censoring" class="nav-link" data-scroll-target="#the-key-assumption-independent-censoring"><span class="header-section-number">2.2.1</span> The Key Assumption: Independent Censoring</a></li>
+  </ul></li>
+  <li><a href="#a-clinical-example" id="toc-a-clinical-example" class="nav-link" data-scroll-target="#a-clinical-example"><span class="header-section-number">2.3</span> A Clinical Example</a></li>
+  <li><a href="#the-redistribute-to-the-right-algorithm" id="toc-the-redistribute-to-the-right-algorithm" class="nav-link" data-scroll-target="#the-redistribute-to-the-right-algorithm"><span class="header-section-number">2.4</span> The Redistribute-to-the-Right Algorithm</a>
+  <ul class="collapse">
+  <li><a href="#applying-the-algorithm-to-the-example-in-section-4.3" id="toc-applying-the-algorithm-to-the-example-in-section-4.3" class="nav-link" data-scroll-target="#applying-the-algorithm-to-the-example-in-section-4.3"><span class="header-section-number">2.4.1</span> Applying the Algorithm to the Example in Section 4.3</a></li>
+  </ul></li>
+  <li><a href="#kaplan-meier-estimation-in-r" id="toc-kaplan-meier-estimation-in-r" class="nav-link" data-scroll-target="#kaplan-meier-estimation-in-r"><span class="header-section-number">2.5</span> Kaplan-Meier Estimation in <code>R</code></a></li>
+  <li><a href="#variance-of-the-kaplan-meier-estimator" id="toc-variance-of-the-kaplan-meier-estimator" class="nav-link" data-scroll-target="#variance-of-the-kaplan-meier-estimator"><span class="header-section-number">2.6</span> Variance of the Kaplan-Meier Estimator</a>
+  <ul class="collapse">
+  <li><a href="#intuition-for-greenwoods-formula" id="toc-intuition-for-greenwoods-formula" class="nav-link" data-scroll-target="#intuition-for-greenwoods-formula"><span class="header-section-number">2.6.1</span> Intuition for Greenwood’s Formula</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">2.7</span> Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Kaplan-Meier Estimator</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>The Kaplan-Meier estimator is the standard nonparametric estimator of the survival function when data may be right-censored. It is also called the <em>product-limit estimator</em> because it is constructed by multiplying estimated conditional survival probabilities across event times.</p>
+<section id="warm-up-the-empirical-distribution-function-without-censoring" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="warm-up-the-empirical-distribution-function-without-censoring"><span class="header-section-number">2.1</span> Warm-Up: The Empirical Distribution Function Without Censoring</h2>
+<p>Before introducing censoring, it is helpful to recall the standard estimator of a distribution function when all event times are fully observed.</p>
+<p>Suppose we observe independent event times <span class="math display">\[
+T_1, T_2, \dots, T_n
+\]</span> with no censoring. The distribution function is <span class="math display">\[
+F(t) = P(T \le t).
+\]</span> The natural estimator of <span class="math inline">\(F(t)\)</span> is the <em>empirical distribution function</em> (EDF): <span class="math display">\[
+\widehat{F}(t)
+=
+\frac{1}{n}\sum_{i=1}^n I(T_i \le t).
+\]</span></p>
+<p>This estimator is simply the sample proportion of subjects whose event time is at or before time <span class="math inline">\(t\)</span>. The corresponding estimator of the survival function is <span class="math display">\[
+\widehat{S}(t) = 1 - \widehat{F}(t).
+\]</span></p>
+<p>Thus, when there is no censoring, estimating the survival curve is straightforward: at each time point <span class="math inline">\(t\)</span>, we just count the proportion of subjects who have survived beyond <span class="math inline">\(t\)</span>.</p>
+<p>For example, suppose the observed event times are <span class="math display">\[
+2,\ 4,\ 5,\ 7,\ 8.
+\]</span> Then <span class="math display">\[
+\widehat{F}(5)=\frac{3}{5}=0.6,
+\qquad
+\widehat{S}(5)=1-\widehat{F}(5)=0.4.
+\]</span> This means that <span class="math inline">\(60\%\)</span> of the sample has experienced the event by time 5, and <span class="math inline">\(40\%\)</span> is still event-free beyond time 5.</p>
+<p>The difficulty with censoring is that we can no longer directly count the proportion of subjects with <span class="math inline">\(T_i \le t\)</span> or <span class="math inline">\(T_i &gt; t\)</span>, because some lifetimes are only partially observed. The Kaplan-Meier estimator solves this problem by generalizing the same basic counting idea to the censored-data setting.</p>
+</section>
+<section id="what-is-the-kaplan-meier-estimator" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="what-is-the-kaplan-meier-estimator"><span class="header-section-number">2.2</span> What Is the Kaplan-Meier Estimator?</h2>
+<p>Let <span class="math inline">\(T\)</span> denote the event time and let <span class="math display">\[
+S(t) = P(T &gt; t)
+\]</span> be the survival function. In practice, we usually observe <span class="math display">\[
+Y_i = \min(T_i, C_i), \qquad \Delta_i = I(T_i \le C_i),
+\]</span> where <span class="math inline">\(C_i\)</span> is a censoring time, <span class="math inline">\(Y_i\)</span> is the observed follow-up time, and <span class="math inline">\(\Delta_i\)</span> indicates whether the event was observed.</p>
+<p>Suppose the distinct observed event times are <span class="math display">\[
+t_{(1)} &lt; t_{(2)} &lt; \cdots &lt; t_{(k)}.
+\]</span> At each event time <span class="math inline">\(t_{(j)}\)</span>, define</p>
+<ul>
+<li><span class="math inline">\(n_j\)</span>: the number of individuals still at risk just before time <span class="math inline">\(t_{(j)}\)</span>,</li>
+<li><span class="math inline">\(d_j\)</span>: the number of events occurring at time <span class="math inline">\(t_{(j)}\)</span>.</li>
+</ul>
+<p>The Kaplan-Meier estimator of the survival function is <span class="math display">\[
+\widehat{S}(t)
+=
+\prod_{j: t_{(j)} \le t}
+\left(1 - \frac{d_j}{n_j}\right)
+=
+\prod_{j: t_{(j)} \le t}
+\frac{n_j - d_j}{n_j}.
+\]</span></p>
+<p>This formula has a simple interpretation. At each event time, we estimate the conditional probability of surviving past that time by <span class="math display">\[
+\widehat{P}(T &gt; t_{(j)} \mid T \ge t_{(j)}) = \frac{n_j - d_j}{n_j},
+\]</span> and then multiply these conditional survival probabilities together. Therefore, <span class="math display">\[
+\widehat{S}(t)
+=
+\prod_{j: t_{(j)} \le t}
+\widehat{P}(T &gt; t_{(j)} \mid T \ge t_{(j)}).
+\]</span></p>
+<p>Several important features follow directly from the definition:</p>
+<ul>
+<li><span class="math inline">\(\widehat{S}(t)\)</span> is a step function.</li>
+<li>It only drops at observed event times.</li>
+<li>Censored observations do not cause vertical drops.</li>
+<li>Censored observations do reduce the size of later risk sets.</li>
+<li>No parametric form for the survival distribution is assumed.</li>
+</ul>
+<section id="the-key-assumption-independent-censoring" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="the-key-assumption-independent-censoring"><span class="header-section-number">2.2.1</span> The Key Assumption: Independent Censoring</h3>
+<p>The most important assumption behind the Kaplan-Meier estimator is <em>independent censoring</em> (also called <em>non-informative censoring</em>). Informally, this means that subjects who are censored at a given time should have the same future survival prospects as subjects who remain under observation at that time.</p>
+<p>In a simple formulation, the event time <span class="math inline">\(T\)</span> and censoring time <span class="math inline">\(C\)</span> are assumed to be independent. More realistically, in many applications we assume they are independent <em>conditional on the variables used in the analysis</em>.</p>
+<p>This assumption matters because the Kaplan-Meier estimator treats censored individuals as representative of those still at risk up to the moment of censoring. If censoring is related to prognosis, the estimator can be biased. For example, if very sick patients are more likely to drop out of follow-up, the Kaplan-Meier curve may overestimate survival.</p>
+<p>In addition to independent censoring, it is usually assumed that:</p>
+<ul>
+<li>subjects are independent of one another,</li>
+<li>event and censoring times are measured accurately,</li>
+<li>the survival experience of subjects recruited early and late in the study is comparable.</li>
+</ul>
+</section>
+</section>
+<section id="a-clinical-example" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="a-clinical-example"><span class="header-section-number">2.3</span> A Clinical Example</h2>
+<p>To see how the Kaplan-Meier estimator works, consider the follow-up times of seven patients in a small clinical study. The outcome is time from treatment to relapse, measured in months.</p>
+<div id="tbl-km-hand-data" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-km-hand-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.1: A small survival dataset with right censoring.
+</figcaption>
+<div aria-describedby="tbl-km-hand-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Patient</th>
+<th style="text-align: center;">Time (months)</th>
+<th style="text-align: center;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">Relapse</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">Censored</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">C</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">Relapse</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">Relapse</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">E</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">Relapse</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">Relapse</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">G</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">Censored</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The distinct event times are <span class="math inline">\(2\)</span>, <span class="math inline">\(4\)</span>, <span class="math inline">\(5\)</span>, and <span class="math inline">\(7\)</span>. Notice that two relapses occur at month 5. The censoring times occur at <span class="math inline">\(3\)</span> and <span class="math inline">\(9\)</span>, but censoring times do not create jumps in the Kaplan-Meier curve.</p>
+<p>We will use this example in the next section to show how the redistribute-to-the-right algorithm produces the Kaplan-Meier estimator by hand.</p>
+</section>
+<section id="the-redistribute-to-the-right-algorithm" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="the-redistribute-to-the-right-algorithm"><span class="header-section-number">2.4</span> The Redistribute-to-the-Right Algorithm</h2>
+<p>An intuitive way to understand the Kaplan-Meier estimator is through the <em>redistribute-to-the-right</em> algorithm.</p>
+<p>Start by assigning each subject equal probability mass <span class="math inline">\(1/n\)</span>. If an event is observed, that subject keeps its mass at the event time. If a subject is censored, then that subject’s probability mass cannot stay at the censoring time, because the event did not occur there. Instead, the censored subject’s mass is redistributed equally over the subjects who remain under observation at later times, that is, to the subjects to the right.</p>
+<p>This idea explains why censoring does not cause a drop in the Kaplan-Meier curve. A censored subject is not counted as a failure. Rather, its weight is passed forward to those who are still at risk.</p>
+<p>The algorithm can be described informally as follows:</p>
+<ol type="1">
+<li>Begin with probability mass <span class="math inline">\(1/n\)</span> on each subject.</li>
+<li>Move through the observed times from left to right.</li>
+<li>When an event occurs, record the mass attached to that event time.</li>
+<li>When a censoring time occurs, redistribute that subject’s mass equally among those still at risk later.</li>
+<li>The estimated distribution function at time <span class="math inline">\(t\)</span> is the total mass assigned to event times up to <span class="math inline">\(t\)</span>.</li>
+<li>The estimated survival function is one minus this estimated distribution function.</li>
+</ol>
+<p>This algorithm leads to exactly the Kaplan-Meier estimator. It is especially useful pedagogically because it connects the Kaplan-Meier curve to the empirical distribution function from the no-censoring setting.</p>
+<p>To see the connection, notice the following:</p>
+<ul>
+<li>If there is no censoring, no redistribution is needed.</li>
+<li>Then each subject simply contributes mass <span class="math inline">\(1/n\)</span> at its event time.</li>
+<li>The resulting estimator is exactly the empirical distribution function.</li>
+<li>With censoring, redistribution preserves the total probability mass while accounting for incomplete follow-up.</li>
+</ul>
+<section id="applying-the-algorithm-to-the-example-in-section-4.3" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="applying-the-algorithm-to-the-example-in-section-4.3"><span class="header-section-number">2.4.1</span> Applying the Algorithm to the Example in Section 4.3</h3>
+<p>Now apply the algorithm to the dataset in Table <a href="#tbl-km-hand-data" class="quarto-xref">Table&nbsp;<span>2.1</span></a>. Initially, each of the 7 patients receives probability mass <span class="math inline">\(1/7\)</span>.</p>
+<div id="tbl-km-rtr" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-km-rtr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.2: Redistribute-to-the-right calculation for the data in Table <a href="#tbl-km-hand-data" class="quarto-xref">Table&nbsp;<span>2.1</span></a>.
+</figcaption>
+<div aria-describedby="tbl-km-rtr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 21%">
+<col style="width: 34%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Time</th>
+<th style="text-align: center;">Observation</th>
+<th style="text-align: left;">Redistribution step</th>
+<th style="text-align: left;">Event mass recorded</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">A relapses</td>
+<td style="text-align: left;">A keeps its mass <span class="math inline">\(1/7\)</span> at time 2</td>
+<td style="text-align: left;"><span class="math inline">\(1/7\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">B is censored</td>
+<td style="text-align: left;">B’s mass <span class="math inline">\(1/7\)</span> is split equally among C, D, E, F, and G, so each receives an extra <span class="math inline">\(1/35\)</span></td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">C relapses</td>
+<td style="text-align: left;">C now carries mass <span class="math inline">\(1/7 + 1/35 = 6/35\)</span> and keeps it at time 4</td>
+<td style="text-align: left;"><span class="math inline">\(6/35\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">D and E relapse</td>
+<td style="text-align: left;">D and E each carry mass <span class="math inline">\(6/35\)</span>, so the total event mass recorded at time 5 is <span class="math inline">\(12/35\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(12/35\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">F relapses</td>
+<td style="text-align: left;">F carries mass <span class="math inline">\(6/35\)</span> and keeps it at time 7</td>
+<td style="text-align: left;"><span class="math inline">\(6/35\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">G is censored</td>
+<td style="text-align: left;">G’s remaining mass <span class="math inline">\(6/35\)</span> stays to the right of all observed event times</td>
+<td style="text-align: left;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Therefore the estimated distribution function places masses <span class="math display">\[
+\frac{1}{7},\ \frac{6}{35},\ \frac{12}{35},\ \frac{6}{35}
+\]</span> at event times <span class="math inline">\(2\)</span>, <span class="math inline">\(4\)</span>, <span class="math inline">\(5\)</span>, and <span class="math inline">\(7\)</span>, respectively. Hence <span class="math display">\[
+\widehat{F}(2)=\frac{1}{7}, \qquad
+\widehat{F}(4)=\frac{1}{7}+\frac{6}{35}=\frac{11}{35},
+\]</span> <span class="math display">\[
+\widehat{F}(5)=\frac{23}{35}, \qquad
+\widehat{F}(7)=\frac{29}{35}.
+\]</span> Since <span class="math inline">\(\widehat{S}(t)=1-\widehat{F}(t)\)</span>, the Kaplan-Meier estimates are <span class="math display">\[
+\widehat{S}(2)=\frac{6}{7}, \qquad
+\widehat{S}(4)=\frac{24}{35}, \qquad
+\widehat{S}(5)=\frac{12}{35}, \qquad
+\widehat{S}(7)=\frac{6}{35}.
+\]</span></p>
+<p>These values agree exactly with the product-limit formula:</p>
+<div id="tbl-km-hand-calc" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-km-hand-calc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.3: Kaplan-Meier calculation from the product-limit formula for the data in Table <a href="#tbl-km-hand-data" class="quarto-xref">Table&nbsp;<span>2.1</span></a>.
+</figcaption>
+<div aria-describedby="tbl-km-hand-calc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 11%">
+<col style="width: 35%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Event time <span class="math inline">\(t_{(j)}\)</span></th>
+<th style="text-align: center;">Number at risk <span class="math inline">\(n_j\)</span></th>
+<th style="text-align: center;">Events <span class="math inline">\(d_j\)</span></th>
+<th style="text-align: center;">Conditional survival <span class="math inline">\(\frac{n_j-d_j}{n_j}\)</span></th>
+<th style="text-align: center;">Kaplan-Meier estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="math inline">\(6/7\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\widehat{S}(2)=6/7=0.857\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="math inline">\(4/5\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\widehat{S}(4)=\frac{6}{7}\cdot\frac{4}{5}=\frac{24}{35}=0.686\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><span class="math inline">\(2/4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\widehat{S}(5)=\frac{24}{35}\cdot\frac{2}{4}=\frac{12}{35}=0.343\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="math inline">\(1/2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\widehat{S}(7)=\frac{12}{35}\cdot\frac{1}{2}=\frac{6}{35}=0.171\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The resulting Kaplan-Meier curve is <span class="math display">\[
+\widehat{S}(t)
+=
+\begin{cases}
+1, &amp; 0 \le t &lt; 2,\\[6pt]
+\dfrac{6}{7}, &amp; 2 \le t &lt; 4,\\[8pt]
+\dfrac{24}{35}, &amp; 4 \le t &lt; 5,\\[8pt]
+\dfrac{12}{35}, &amp; 5 \le t &lt; 7,\\[8pt]
+\dfrac{6}{35}, &amp; t \ge 7.
+\end{cases}
+\]</span></p>
+<p>Notice that the curve is flat between event times and drops only when a relapse is observed. The median survival time is the first time at which the estimated survival probability falls to <span class="math inline">\(0.5\)</span> or below. Here, <span class="math display">\[
+\widehat{S}(4)=0.686 &gt; 0.5
+\qquad \text{and} \qquad
+\widehat{S}(5)=0.343 &lt; 0.5,
+\]</span> so the estimated median survival is 5 months.</p>
+</section>
+</section>
+<section id="kaplan-meier-estimation-in-r" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="kaplan-meier-estimation-in-r"><span class="header-section-number">2.5</span> Kaplan-Meier Estimation in <code>R</code></h2>
+<p>The <code>survival</code> package in <code>R</code> provides the standard tools for Kaplan-Meier estimation. The next example uses the built-in <code>lung</code> dataset from that package. This dataset contains survival times for patients with advanced lung cancer.</p>
+<p>We will compare the Kaplan-Meier curves for males and females.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>lung2 <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(survival<span class="sc">::</span>lung[, <span class="fu">c</span>(<span class="st">"time"</span>, <span class="st">"status"</span>, <span class="st">"sex"</span>)])</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>lung2<span class="sc">$</span>status <span class="ot">&lt;-</span> lung2<span class="sc">$</span>status <span class="sc">==</span> <span class="dv">2</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>lung2<span class="sc">$</span>sex <span class="ot">&lt;-</span> <span class="fu">factor</span>(lung2<span class="sc">$</span>sex, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>))</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lung2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  time status  sex
+1  306   TRUE Male
+2  455   TRUE Male
+3 1010  FALSE Male
+4  210   TRUE Male
+5  883   TRUE Male
+6 1022  FALSE Male</code></pre>
+</div>
+</div>
+<p>The first few rows help us see the structure of the data:</p>
+<ul>
+<li><code>time</code> is the observed follow-up time in days.</li>
+<li><code>status</code> is <code>TRUE</code> if death was observed and <code>FALSE</code> if the observation was censored.</li>
+<li><code>sex</code> identifies the group used for comparing Kaplan-Meier curves.</li>
+</ul>
+<p>We can now fit the Kaplan-Meier estimator:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">survfit</span>(<span class="fu">Surv</span>(time, status) <span class="sc">~</span> sex, <span class="at">data =</span> lung2)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>fit</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call: survfit(formula = Surv(time, status) ~ sex, data = lung2)
+
+             n events median 0.95LCL 0.95UCL
+sex=Male   138    112    270     212     310
+sex=Female  90     53    426     348     550</code></pre>
+</div>
+</div>
+<p>The corresponding Kaplan-Meier plot is:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  fit,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"#1b9e77"</span>, <span class="st">"#d95f02"</span>),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Days"</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Estimated survival probability"</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">mark.time =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">conf.int =</span> <span class="cn">FALSE</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"topright"</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>),</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"#1b9e77"</span>, <span class="st">"#d95f02"</span>),</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">bty =</span> <span class="st">"n"</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="02-KM-estimation_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Kaplan-Meier curves for the <code>lung</code> dataset, grouped by sex.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Some key points to notice when reading the Kaplan-Meier plot are:</p>
+<ul>
+<li>Each downward step corresponds to one or more observed deaths.</li>
+<li>The short marks on the curves indicate censoring times.</li>
+<li>The curve that stays higher indicates better estimated survival.</li>
+<li>The curve becomes less stable in the right tail because fewer subjects remain at risk.</li>
+</ul>
+<p>For this dataset, the female curve lies above the male curve for most of the follow-up period. This suggests that females have better observed survival than males in these data. The estimated median survival times are approximately 270 days for males and 426 days for females.</p>
+<p>This interpretation should be kept descriptive. A Kaplan-Meier curve summarizes survival experience in the observed groups, but by itself it does not establish a causal effect. Group differences may also reflect other prognostic variables besides sex.</p>
+</section>
+<section id="variance-of-the-kaplan-meier-estimator" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="variance-of-the-kaplan-meier-estimator"><span class="header-section-number">2.6</span> Variance of the Kaplan-Meier Estimator</h2>
+<p>Because the Kaplan-Meier curve is an estimate, it is important to quantify its uncertainty. The standard large-sample variance estimator is <em>Greenwood’s formula</em>: <span class="math display">\[
+\widehat{\mathrm{Var}}\{\widehat{S}(t)\}
+=
+\widehat{S}(t)^2
+\sum_{j: t_{(j)} \le t}
+\frac{d_j}{n_j(n_j-d_j)}.
+\]</span></p>
+<p>The corresponding estimated standard error is <span class="math display">\[
+\widehat{\mathrm{se}}\{\widehat{S}(t)\}
+=
+\sqrt{
+\widehat{\mathrm{Var}}\{\widehat{S}(t)\}
+}.
+\]</span></p>
+<section id="intuition-for-greenwoods-formula" class="level3" data-number="2.6.1">
+<h3 data-number="2.6.1" class="anchored" data-anchor-id="intuition-for-greenwoods-formula"><span class="header-section-number">2.6.1</span> Intuition for Greenwood’s Formula</h3>
+<p>Greenwood’s formula is easier to understand if we focus on what happens at each event time.</p>
+<ul>
+<li>The Kaplan-Meier estimator is a product of many conditional survival factors.</li>
+<li>Each factor <span class="math inline">\(\left(1-d_j/n_j\right)\)</span> is estimated with some uncertainty.</li>
+<li>The term <span class="math inline">\(\dfrac{d_j}{n_j(n_j-d_j)}\)</span> measures how much uncertainty is contributed by the <span class="math inline">\(j\)</span>th event time.</li>
+<li>Large risk sets make this term small, so early parts of the curve are usually estimated more precisely.</li>
+<li>Small risk sets make this term large, so the tail of the curve is often much more variable.</li>
+</ul>
+<p>The multiplier <span class="math inline">\(\widehat{S}(t)^2\)</span> appears because the variance is being translated back to the survival scale after combining the uncertainty from the product of conditional survival probabilities.</p>
+<p>For the hand-worked example above, at time <span class="math inline">\(t=7\)</span> we found <span class="math display">\[
+\widehat{S}(7)=\frac{6}{35}.
+\]</span> Greenwood’s formula gives <span class="math display">\[
+\widehat{\mathrm{Var}}\{\widehat{S}(7)\}
+=
+\left(\frac{6}{35}\right)^2
+\left(
+\frac{1}{7\cdot 6}
++
+\frac{1}{5\cdot 4}
++
+\frac{2}{4\cdot 2}
++
+\frac{1}{2\cdot 1}
+\right)
+\approx 0.024.
+\]</span> Thus the estimated standard error is approximately <span class="math display">\[
+\widehat{\mathrm{se}}\{\widehat{S}(7)\}
+\approx \sqrt{0.024}
+\approx 0.156.
+\]</span></p>
+<p>The uncertainty is still substantial near the end of follow-up because only 2 patients were still at risk just before month 7. The tied failures at month 5 also make a noticeable contribution through the term <span class="math inline">\(\frac{2}{4\cdot 2}\)</span>. This is exactly the pattern seen in practice: the right tail of a Kaplan-Meier curve is usually the noisiest part, especially when the risk set is small or multiple events occur at the same time.</p>
+<p>In applications, Greenwood’s formula is commonly used to construct confidence intervals for the survival function. Many software packages, including <code>survival</code> in <code>R</code>, use a transformed scale such as the log-log scale to obtain intervals that remain within <span class="math inline">\([0,1]\)</span>.</p>
+</section>
+</section>
+<section id="summary" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="summary"><span class="header-section-number">2.7</span> Summary</h2>
+<p>The Kaplan-Meier estimator is the basic nonparametric tool for estimating a survival curve from right-censored data. It is obtained by multiplying conditional survival probabilities across event times. Its validity depends crucially on the assumption of independent censoring. In practice, the estimator is easy to compute by hand for a small dataset and easy to fit in <code>R</code> using <code>survfit()</code>. Greenwood’s formula provides the standard variance estimator and helps explain why uncertainty increases when only a few subjects remain at risk.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./01-introduction.html" class="pagination-link" aria-label="Introduction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

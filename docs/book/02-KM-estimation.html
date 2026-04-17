@@ -282,12 +282,23 @@ Y_i = \min(T_i, C_i), \qquad \Delta_i = I(T_i \le C_i),
 \]</span> where <span class="math inline">\(C_i\)</span> is a censoring time, <span class="math inline">\(Y_i\)</span> is the observed follow-up time, and <span class="math inline">\(\Delta_i\)</span> indicates whether the event was observed.</p>
 <p>Suppose the distinct observed event times are <span class="math display">\[
 t_{(1)} &lt; t_{(2)} &lt; \cdots &lt; t_{(k)}.
-\]</span> At each event time <span class="math inline">\(t_{(j)}\)</span>, define</p>
+\]</span> Then we have the following decomposition of the survival function: <span class="math display">\[
+\begin{aligned}
+&amp;{S}(t_{(k)})\\
+= &amp;P(T&gt;t_{(k)})\\
+= &amp;P(T&gt;t_{(k)}|T&gt;t_{(k-1)})P(T&gt;t_{(k-1)})\\
+= &amp;P(T&gt;t_{(k)}|T&gt;t_{(k-1)})P(T&gt;t_{(k-1)}|T&gt;t_{(k-2)})\cdots P(T&gt;t_{(2)}|T&gt;t_{(1)})P(T&gt;t_{(1)})\\
+= &amp; \prod_{j:t_{(j)}\leq t_{(k)}}P(T&gt;t_{(j)}|T&gt;t_{(j-1)}) \\
+= &amp; \prod_{j:t_{(j)}\leq t_{(k)}}(1-P(T=t_{(j)}|T\geq t_{(j)}) )\\
+= &amp; \prod_{j:t_{(j)}\leq t_{(k)}}(1-P(T=t_{(j)}|T\geq t_{(j)},C\geq t_{(j)} ) )\\
+\end{aligned}
+\]</span></p>
+<p>At each event time <span class="math inline">\(t_{(j)}\)</span>, define</p>
 <ul>
 <li><span class="math inline">\(n_j\)</span>: the number of individuals still at risk just before time <span class="math inline">\(t_{(j)}\)</span>,</li>
 <li><span class="math inline">\(d_j\)</span>: the number of events occurring at time <span class="math inline">\(t_{(j)}\)</span>.</li>
 </ul>
-<p>The Kaplan-Meier estimator of the survival function is <span class="math display">\[
+<p>The Kaplan-Meier estimator of the survival function is (this is simply the plug-in principal) <span class="math display">\[
 \widehat{S}(t)
 =
 \prod_{j: t_{(j)} \le t}

@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
+<link href="./03-log-rank-test.html" rel="next">
 <link href="./01-introduction.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -192,6 +192,12 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./03-log-rank-test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Log-Rank Test</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -221,7 +227,8 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#intuition-for-greenwoods-formula" id="toc-intuition-for-greenwoods-formula" class="nav-link" data-scroll-target="#intuition-for-greenwoods-formula"><span class="header-section-number">2.6.1</span> Intuition for Greenwood’s Formula</a></li>
   </ul></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">2.7</span> Summary</a></li>
+  <li><a href="#the-nelson-aalen-estimator" id="toc-the-nelson-aalen-estimator" class="nav-link" data-scroll-target="#the-nelson-aalen-estimator"><span class="header-section-number">2.7</span> The Nelson-Aalen Estimator</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">2.8</span> Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -624,7 +631,7 @@ sex=Female  90     53    426     348     550</code></pre>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Days"</span>,</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Estimated survival probability"</span>,</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">mark.time =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">conf.int =</span> <span class="cn">FALSE</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">conf.int =</span> <span class="cn">TRUE</span></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(</span>
@@ -705,9 +712,58 @@ sex=Female  90     53    426     348     550</code></pre>
 <p>In applications, Greenwood’s formula is commonly used to construct confidence intervals for the survival function. Many software packages, including <code>survival</code> in <code>R</code>, use a transformed scale such as the log-log scale to obtain intervals that remain within <span class="math inline">\([0,1]\)</span>.</p>
 </section>
 </section>
-<section id="summary" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="summary"><span class="header-section-number">2.7</span> Summary</h2>
-<p>The Kaplan-Meier estimator is the basic nonparametric tool for estimating a survival curve from right-censored data. It is obtained by multiplying conditional survival probabilities across event times. Its validity depends crucially on the assumption of independent censoring. In practice, the estimator is easy to compute by hand for a small dataset and easy to fit in <code>R</code> using <code>survfit()</code>. Greenwood’s formula provides the standard variance estimator and helps explain why uncertainty increases when only a few subjects remain at risk.</p>
+<section id="the-nelson-aalen-estimator" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="the-nelson-aalen-estimator"><span class="header-section-number">2.7</span> The Nelson-Aalen Estimator</h2>
+<p>The Kaplan-Meier estimator focuses on the survival function. Another important nonparametric estimator in survival analysis is the <em>Nelson-Aalen estimator</em>, which estimates the cumulative hazard function <span class="math display">\[
+\Lambda(t) = \int_0^t \lambda(u)\,du.
+\]</span></p>
+<p>If the distinct event times are <span class="math inline">\(t_{(1)} &lt; \cdots &lt; t_{(k)}\)</span>, with <span class="math inline">\(n_j\)</span> subjects at risk and <span class="math inline">\(d_j\)</span> events at time <span class="math inline">\(t_{(j)}\)</span>, then the Nelson-Aalen estimator is <span class="math display">\[
+\widehat{\Lambda}_{NA}(t)
+=
+\sum_{j:t_{(j)}\le t} \frac{d_j}{n_j}.
+\]</span></p>
+<p>This estimator is very natural: at each event time we add the observed hazard increment <span class="math inline">\(d_j/n_j\)</span>, and then accumulate these increments over time. Thus, unlike the Kaplan-Meier estimator, which is multiplicative, the Nelson-Aalen estimator is <em>additive</em>.</p>
+<p>Several basic properties are worth noting:</p>
+<ul>
+<li><span class="math inline">\(\widehat{\Lambda}_{NA}(t)\)</span> is a step function.</li>
+<li>It only jumps at observed event times.</li>
+<li>The jump size at time <span class="math inline">\(t_{(j)}\)</span> is <span class="math inline">\(d_j/n_j\)</span>.</li>
+<li>Censoring changes later risk sets but does not itself create a jump.</li>
+</ul>
+<p>For the hand-worked example above, the event times are <span class="math inline">\(2\)</span>, <span class="math inline">\(4\)</span>, <span class="math inline">\(5\)</span>, and <span class="math inline">\(7\)</span>, with <span class="math display">\[
+(n_j,d_j) = (7,1),\ (5,1),\ (4,2),\ (2,1).
+\]</span> Therefore <span class="math display">\[
+\widehat{\Lambda}_{NA}(7)
+=
+\frac{1}{7}+\frac{1}{5}+\frac{2}{4}+\frac{1}{2}
+=
+\frac{47}{35}
+\approx 1.343.
+\]</span></p>
+<p>If we want a survival estimate based on the cumulative hazard, we can combine the Nelson-Aalen estimator with the identity <span class="math display">\[
+S(t)=\exp\{-\Lambda(t)\}
+\]</span> to obtain <span class="math display">\[
+\widehat{S}_{NA}(t)=\exp\big\{-\widehat{\Lambda}_{NA}(t)\big\}.
+\]</span> For the same example, <span class="math display">\[
+\widehat{S}_{NA}(7)
+=
+\exp\left(-\frac{47}{35}\right)
+\approx 0.261.
+\]</span></p>
+<p>This differs from the Kaplan-Meier estimate <span class="math inline">\(\widehat{S}(7)=6/35\approx 0.171\)</span>, because the sample is small and the hazard jumps are fairly large. In larger samples, or when the increments <span class="math inline">\(d_j/n_j\)</span> are small, the two approaches are often quite close. Indeed, <span class="math display">\[
+\log \widehat{S}_{KM}(t)
+=
+\sum_{j:t_{(j)}\le t}\log\left(1-\frac{d_j}{n_j}\right)
+\approx
+-\sum_{j:t_{(j)}\le t}\frac{d_j}{n_j}
+=
+-\widehat{\Lambda}_{NA}(t),
+\]</span> so the Kaplan-Meier and Nelson-Aalen estimators are closely related.</p>
+<p>The Nelson-Aalen estimator is especially useful because cumulative hazards are often easier to manipulate mathematically than survival functions. It also appears naturally in later topics such as the log-rank test and the Cox proportional hazards model.</p>
+</section>
+<section id="summary" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="summary"><span class="header-section-number">2.8</span> Summary</h2>
+<p>The Kaplan-Meier estimator is the basic nonparametric tool for estimating a survival curve from right-censored data. It is obtained by multiplying conditional survival probabilities across event times. Its validity depends crucially on the assumption of independent censoring. In practice, the estimator is easy to compute by hand for a small dataset and easy to fit in <code>R</code> using <code>survfit()</code>. Greenwood’s formula provides the standard variance estimator and helps explain why uncertainty increases when only a few subjects remain at risk. The Nelson-Aalen estimator gives a closely related nonparametric estimator of the cumulative hazard function and provides another important way to summarize censored survival data.</p>
 
 
 </section>
@@ -1120,8 +1176,8 @@ sex=Female  90     53    426     348     550</code></pre>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./03-log-rank-test.html" class="pagination-link" aria-label="Log-Rank Test">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Log-Rank Test</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

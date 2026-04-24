@@ -6,4 +6,4 @@ image: ../files/survival.png
 
 This post shares my Quarto book, *An Introduction to Survival Analysis*.
 
-You can read the book here: [An Introduction to Survival Analysis](../book/).
+You can read the book here: [An Introduction to Survival Analysis](../_book/).

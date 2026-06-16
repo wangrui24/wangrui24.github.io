@@ -8,8 +8,6 @@ title-block-banner: true
 
 - **Wang, R.**, Osom, A., Zhang, B. (2026+). Generalized projection tests for function-valued parameters with applications to testing structural causal assumptions. [arXiv](https://arxiv.org/abs/2603.13681)
 
-- Deng, Y., **Wang, R.**, Zhan, X. (2026+). Randomized interventional effects for semicompeteting risks, with application to allogeneic stem cell transplantation study.  [arXiv](https://arxiv.org/abs/2412.06114)
-
 - **Wang, R.**, Zhao, Y., Dukes, O., Zhang, B. (2026+). Nested Instrumental Variables Analysis: Switcher Average Treatment Effect, Identification, Efficient Estimation and Generalizability.  [arXiv](https://arxiv.org/abs/2405.07102)
 
 - **Wang, R.**, Chan, KCG., Ye, T. (2026+). GMM with Many Weak Moment Conditions and Nuisance Parameters: General Theory and Applications to Causal Inference. [arXiv](https://arxiv.org/abs/2505.07295)
@@ -23,6 +21,8 @@ title-block-banner: true
 ### 2026
 
 1. **Wang, R.**, Heagerty, P., Chan, KCG., Suri, P. (2026). Estimating controlled direct treatment effects on pain intensity using structural mean models: a general approach for pain randomized controlled trials. *Pain Reports*.  [DOI](http://dx.doi.org/10.1097/PR9.0000000000001409)
+
+2. Deng, Y., **Wang, R.**, Zhang, T., Zhan, X. (2026+). Randomized interventional effects for semicompeteting risks, with application to allogeneic stem cell transplantation study.  *Statistics in Medicine* (in press).
 
    
 ### 2025

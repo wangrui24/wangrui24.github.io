@@ -16,7 +16,7 @@ about:
       href: mailto:wangrui8@uw.edu
     - icon: mortarboard-fill 
       text: Google Scholar
-      href: https://scholar.google.com/citations?user=OZeSbMEAAAAJ&hl=zh-CN
+      href: https://scholar.google.com/citations?user=OZeSbMEAAAAJ&hl=en
     - icon: github
       text: Github
       href: https://github.com/wangrui24?tab=repositories
